@@ -1,7 +1,7 @@
 
 
 <?php
-
+// increment and decrement operators in php
 $odd = 8;
 $even = 3;
 
