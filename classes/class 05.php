@@ -1,6 +1,6 @@
 
 
-<!-- comparison opt-->
+<!-- comparison operators-->
 <?php
 $a = 1;
 $b = 10;
