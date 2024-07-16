@@ -1,7 +1,7 @@
 <?php 
 // OPT in pHP
 
-// arthmetic opt
+// arithmetic operators
 // + - * / % **
 
 $Totalmarks =  100;
