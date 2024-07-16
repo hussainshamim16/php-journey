@@ -1,3 +1,4 @@
+// echo in php
 <?php 
 // php is a server side language
 // eho 
