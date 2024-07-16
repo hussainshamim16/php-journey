@@ -1,6 +1,6 @@
 
 
-<!-- assignment opt -->
+<!-- assignment operators -->
  <?php
  $odd = 8;
  $even = 3;
