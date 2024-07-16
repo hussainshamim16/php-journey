@@ -1,4 +1,4 @@
-// contant variables in php
+// constant variables in php
 
 <?php
 const age = 17;
