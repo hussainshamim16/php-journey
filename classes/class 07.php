@@ -1,6 +1,6 @@
 
 
-<!-- string opt -->
+<!-- string operators -->
 
 <?php
 $name = "M.Hussain ";
