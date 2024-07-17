@@ -1,4 +1,5 @@
 <?php
+// array 
 $arr1 = [
     'hussain',
     'hasnain',
