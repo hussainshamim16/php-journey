@@ -1,5 +1,5 @@
 <?php  
-// loops in php
+// loops in php for while do while
 
 
 // for loop
