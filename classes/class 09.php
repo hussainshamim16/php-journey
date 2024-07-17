@@ -1,6 +1,6 @@
 
 
-<!-- logical opt -->
+<!-- logical operator -->
 
 <?php
 $userAge = 5;
