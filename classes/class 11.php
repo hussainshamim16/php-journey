@@ -1,5 +1,5 @@
 <?php
-// function in php
+// functions in php
 
 // types of fnc
 // 1 user define
