@@ -1,0 +1,76 @@
+.blog-item {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    text-align: left;
+    padding: 9px;
+    min-height: 485px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 32%;
+    transition: 0.3s ease-in-out;
+}
+
+.blog-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.blogs-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.blog-item .content a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 70%;
+    background: #FF6501;
+    padding: 10px 30px;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.blog-item .content a img, .date-icon-image {
+    width: 20px !important;
+    height: auto !important;
+}
+.content p.date-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blog-item:hover {
+    background: #ff6500;
+}
+.blog-item:hover {
+    background: #ff6500;
+}
+.blog-item:hover .content h4 {
+    color: #fff;
+}
+
+.blog-item:hover .content p {
+    color: #fff;
+}
+.blog-item:hover p.date-wrapper img {
+    filter: brightness(0) invert(1);
+}
+.blog-item:hover .content a {
+    background: #fff;
+    color: #000;
+}
+
+.blog-item:hover .content a img {
+    filter: brightness(0) invert(0);
+}

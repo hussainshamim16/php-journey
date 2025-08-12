@@ -1,0 +1,398 @@
+ .slider-section {
+     padding: 50px 20px;
+ }
+
+ .swiper {
+     padding-bottom: 50px;
+ }
+
+ .services .swiper .swiper-wrapper .swiper-slide {
+     background: white;
+     border-radius: 25px;
+     overflow: hidden;
+     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+     text-align: left;
+     padding: 9px;
+     min-height: 485px;
+ }
+
+ .swiper-slide img {
+     width: 100%;
+     height: 260px;
+     object-fit: cover;
+     border-radius: 25px;
+ }
+
+ .content {
+     padding: 15px 20px;
+ }
+
+ .content h4 {
+     font-size: 22px;
+     font-weight: 700;
+     margin-bottom: 10px;
+     margin-top: 0px;
+     line-height: 25px;
+ }
+
+ .content p {
+     font-size: 14px;
+     line-height: 1.6;
+ }
+
+ /* Swiper navigation buttons */
+ .perantBtn {
+     /* background-color: black; */
+     width: 100%;
+     height: max-content;
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+ }
+
+ /* CTA Button */
+ .cta-button {
+     text-align: right;
+     /* margin-top: 20px; */
+     padding-right: 20px;
+ }
+
+ .cta-button a {
+     background: white;
+     color: black;
+     padding: 12px 20px;
+     border-radius: 10px;
+     font-weight: 600;
+     text-decoration: none;
+     transition: all 0.3s;
+ }
+
+ .cta-button a:hover {
+     background: #333;
+     color: white;
+ }
+
+ .swiper-button-lock,
+ .swiper-button-disabled {
+     display: inline-block;
+     /* opacity: 0.8; */
+     pointer-events: none;
+     background-color: #000 !important;
+ }
+
+ .prev {
+     background-color: black;
+ }
+
+ .swiperbtn {
+     padding: 20px;
+     background: white;
+     border-radius: 100%;
+     vertical-align: middle;
+     display: inline-flex;
+     align-items: center;
+     justify-content: space-around;
+     flex-direction: column;
+
+ }
+
+ .swiperbtn svg path {
+     stroke: #000;
+
+ }
+
+ .swiper-button-lock svg path,
+ .swiper-button-disabled svg path {
+     stroke: #fff;
+ }
+
+
+ /* projects styling */
+
+ .projectsmaincontainer {
+     /* border: 2px solid red; */
+     width: 100%;
+     height: 100vh;
+
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+     flex-direction: column;
+
+ }
+
+ .projectsmaincontainer .contentSection {
+     width: 1440px;
+     /* background-color: #cec5ff; */
+     margin-bottom: 10px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 0px 80px;
+ }
+
+ .projectsmaincontainer .contentSection .heading h1 {
+     font-size: 55px;
+ }
+
+ .projectsmaincontainer .button-sections {}
+
+ .projectsmaincontainer .button-sections .swiperbtn {
+     padding: 20px;
+     background: #FF6500;
+     border-radius: 100%;
+     vertical-align: middle;
+     display: inline-flex;
+     align-items: center;
+     justify-content: space-around;
+     flex-direction: column;
+
+ }
+
+ .projectsmaincontainer .button-sections .swiperbtn svg path {
+     stroke: #fff;
+ }
+
+ .project-slider {
+     /* background-color: red; */
+     width: 100%;
+     height: 80vh;
+ }
+
+ .project-slider .swiper {
+     width: 100%;
+     height: 100%;
+     /* border: 2px solid green; */
+ }
+
+ .project-slider .swiper-slide {
+     text-align: center;
+     font-size: 18px;
+     /* background: #444; */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 250px;
+     border-radius: 20px;
+     overflow: hidden;
+ }
+
+ .project-slider .swiper-slide img {
+     display: block;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+
+
+ /* testimonials section css */
+ .testimonial {
+     width: 100%;
+ }
+
+
+
+ .testimonial-slider-one .swiper-slide {
+     width: 450px;
+     min-height: 350px;
+     transition: 0.3s ease-in;
+     border-radius: 25px;
+     padding: 30px 30px 0px 30px;
+     margin-bottom: 30px;
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+     position: relative;
+     border: 1px solid rgb(236, 236, 236);
+     background-color: #fff;
+ }
+
+ .testimonial-slider-one .swiper-slide:hover {
+     background-color: #FF6500;
+ }
+
+ .testimonial-slider-one .swiper-slide:hover * {
+     color: white;
+     fill: white;
+ }
+
+ .testimonial-slider-one .swiper-slide::before {
+     content: url('data:image/svg+xml,<svg width="94" height="79" viewBox="0 0 94 79" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.8945 1.04492C33.5892 0.958609 34.1982 1.03175 34.7393 1.4375C35.2855 1.84729 35.5226 2.43168 35.6328 3.14453C35.74 3.83863 35.7393 4.74296 35.7393 5.87012V14.2285C35.7393 14.9534 35.7393 15.5372 35.6895 16.0029C35.6387 16.4778 35.5315 16.8884 35.2764 17.2471C35.0166 17.6121 34.6382 17.8538 34.1768 18.0664C33.7184 18.2775 33.1139 18.4866 32.3545 18.75C28.0656 20.2377 24.7533 22.5849 22.3906 25.7812C20.0258 28.9804 18.5893 33.0618 18.1064 38.0527C18.0183 38.9641 17.959 39.5906 17.9873 40.0723C18.0142 40.5293 18.1178 40.7931 18.3145 41.0098C18.506 41.2208 18.7683 41.3524 19.2588 41.4248C19.7689 41.5001 20.4469 41.502 21.4238 41.502H32.9092C33.8376 41.502 34.5843 41.5004 35.1699 41.5791C35.77 41.6598 36.2755 41.8331 36.6768 42.2344C37.0779 42.6356 37.2513 43.1403 37.332 43.7402C37.4108 44.3259 37.4092 45.0733 37.4092 46.002V74C37.4092 74.9284 37.4107 75.6751 37.332 76.2607C37.2514 76.8608 37.078 77.3663 36.6768 77.7676C36.2755 78.1688 35.77 78.3412 35.1699 78.4219C34.5843 78.5006 33.8376 78.5 32.9092 78.5H5C4.07152 78.5 3.32489 78.5006 2.73926 78.4219C2.13918 78.3412 1.6337 78.1689 1.23242 77.7676C0.831144 77.3663 0.658803 76.8608 0.578125 76.2607C0.49943 75.6751 0.5 74.9285 0.5 74V44.6426C0.500003 32.3297 3.53697 22.4309 9.66113 14.998C14.8482 8.62387 21.7579 4.18349 30.3682 1.6709C31.395 1.37125 32.2234 1.12832 32.8945 1.04492ZM88.9854 1.04492C89.68 0.958609 90.289 1.03175 90.8301 1.4375C91.3763 1.84729 91.6134 2.4317 91.7236 3.14453C91.8309 3.83863 91.8301 4.74296 91.8301 5.87012V14.2285C91.8301 14.9534 91.8301 15.5372 91.7803 16.0029C91.7295 16.4778 91.6223 16.8884 91.3672 17.2471C91.1075 17.6121 90.729 17.8538 90.2676 18.0664C89.8092 18.2775 89.2047 18.4866 88.4453 18.75C84.1564 20.2377 80.8442 22.5849 78.4814 25.7812C76.1166 28.9804 74.6802 33.0618 74.1973 38.0527C74.1091 38.9641 74.0498 39.5906 74.0781 40.0723C74.105 40.5293 74.2086 40.7931 74.4053 41.0098C74.5968 41.2208 74.8591 41.3524 75.3496 41.4248C75.8598 41.5001 76.5378 41.502 77.5146 41.502H89C89.9284 41.502 90.6751 41.5004 91.2607 41.5791C91.8608 41.6598 92.3663 41.8331 92.7676 42.2344C93.1687 42.6355 93.3412 43.1404 93.4219 43.7402C93.5006 44.3259 93.5 45.0733 93.5 46.002V74C93.5 74.9285 93.5006 75.6751 93.4219 76.2607C93.3412 76.8608 93.1689 77.3663 92.7676 77.7676C92.3663 78.1689 91.8608 78.3412 91.2607 78.4219C90.6751 78.5006 89.9285 78.5 89 78.5H61.0908C60.1624 78.5 59.4157 78.5006 58.8301 78.4219C58.23 78.3412 57.7245 78.1688 57.3232 77.7676C56.922 77.3663 56.7486 76.8608 56.668 76.2607C56.5893 75.6751 56.5908 74.9284 56.5908 74V44.6426C56.5908 32.3297 59.6278 22.4309 65.752 14.998C70.939 8.62387 77.8487 4.18348 86.459 1.6709C87.4859 1.37124 88.3142 1.12832 88.9854 1.04492Z" fill="%23FF6500" stroke="black"/></svg>');
+     position: absolute;
+     top: -50px;
+     z-index: 20px;
+ }
+
+ .testimonial-slider-one .swiper-slide img {
+     display: block;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+
+ .testimonial-slider-one .testimonialSwiper .swiper-wrapper {
+     padding-top: 50px;
+ }
+
+ .testimonial-card:last-child {
+     margin-bottom: 0;
+ }
+
+ .testimonial-content {
+     margin-bottom: 20px;
+     color: #333;
+     transition: 0.3s ease-in;
+     font-size: 16px;
+ }
+
+
+ .testimonial-content p {
+     padding-bottom: 0px;
+
+ }
+
+ .testimonial-author {
+     font-weight: bold;
+     margin-top: 20px;
+     padding-top: 20px;
+     border-top: 1px solid #eee;
+     font-size: 16px;
+ }
+
+ .testimonial-author::before {
+     content: "— ";
+ }
+
+ /* Divider */
+ .divider {
+     height: 1px;
+     background: #eeeeeea4;
+     margin: 30px 0;
+ }
+
+ /* Status Tag */
+ .status-tag {
+     display: inline-block;
+     background: #f0f0f0;
+     padding: 5px 10px;
+     border-radius: 4px;
+     font-size: 14px;
+     margin-top: 10px;
+     font-weight: normal;
+ }
+
+
+ .footer-testimonial {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding-top: 10px;
+ }
+
+ .usersection {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+ }
+
+ .testimonial-slider-one .testimonialSwiper .swiper-wrapper .swiper-slide .testimonial-content .footer-testimonial .userimg img {
+     height: 60px;
+     width: 60px;
+     border-radius: 100%;
+ }
+
+ .footer-testimonial .starimg {
+     width: 30%;
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+ }
+
+ .footer-testimonial .starimg svg {
+     color: red;
+     width: 100%;
+ }
+
+ .starimg:hover svg path {
+     fill: black;
+     transition: fill 0.3s ease;
+ }
+
+ .footer-testimonial .userName h2 {
+     font-size: 17px;
+     font-weight: 600;
+ }
+
+
+ /* home page about section images */
+.aboutrightsideimage::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    /* width: 50%; */
+    overflow: hidden;
+    background: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+    width: 100%;
+    height: 130%;
+    background-size: contain;
+    right: -30%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+ .aboutleftsideimage::after {
+     content: url('data:image/svg+xml,<svg width="944" height="1088" viewBox="0 0 944 1088" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_10)"><circle cx="400" cy="544" r="221" fill="%23FF6500"/><circle cx="400" cy="544" r="220.5" stroke="black"/></g><defs><filter id="filter0_f_2069_10" x="-143.25" y="0.75" width="1086.5" height="1086.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="161.125" result="effect1_foregroundBlur_2069_10"/></filter></defs></svg>');
+     position: absolute;
+     top: -20%;
+     right: 15%;
+     z-index: -1;
+     transform: rotate(139deg);
+ }
+
+ /* hero section text */
+ .transText h2 {
+     background: -webkit-linear-gradient(315deg, rgba(255, 255, 255, 1) 32%, rgba(255, 101, 0, 1) 80%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+ }
+
+ /* choose us cards */
+ .chooseCard {
+     background-color: red;
+ }
+
+ /* testimonial */
+ .testimonials {
+     background: -webkit-linear-gradient(89deg, white -22%, #FF6500 190%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+ }
+
+ .processback::before {
+     content: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     position: absolute;
+     top: -10%;
+     left: -5%;
+ }
+
+ .processback::after {
+     content: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     position: absolute;
+     top: -10%;
+     right: -5%;
+     z-index: -2;
+ }
+
+ .clients::after {
+     content: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     position: absolute;
+     top: -140%;
+     right: 60%;
+     z-index: -2;
+ }
+
+ .feedback::after {
+     content: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     position: absolute;    
+     top: -120%;
+     left: 20%;
+     z-index: -2;
+ }
