@@ -323,20 +323,20 @@
 
 
  /* home page about section images */
-.aboutrightsideimage::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    /* width: 50%; */
-    overflow: hidden;
-    background: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
-    width: 100%;
-    height: 130%;
-    background-size: contain;
-    right: -30%;
-    background-repeat: no-repeat;
-    background-position: right;
-}
+ /* .aboutrightsideimage::after {
+     content: '';
+     position: absolute;
+     z-index: -1;
+     overflow: hidden;
+     background: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     width: 109%;
+     height: 300%;
+     background-size: contain;
+     left: 70%;
+     top: -90%;
+     background-repeat: no-repeat;
+     background-position: right;
+ } */
 
  .aboutleftsideimage::after {
      content: url('data:image/svg+xml,<svg width="944" height="1088" viewBox="0 0 944 1088" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_10)"><circle cx="400" cy="544" r="221" fill="%23FF6500"/><circle cx="400" cy="544" r="220.5" stroke="black"/></g><defs><filter id="filter0_f_2069_10" x="-143.25" y="0.75" width="1086.5" height="1086.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="161.125" result="effect1_foregroundBlur_2069_10"/></filter></defs></svg>');
@@ -361,38 +361,118 @@
 
  /* testimonial */
  .testimonials {
-     background: -webkit-linear-gradient(89deg, white -22%, #FF6500 190%);
+     background: -webkit-linear-gradient(89deg, white -9%, #FF6500 190%);
      -webkit-background-clip: text;
      -webkit-text-fill-color: transparent;
  }
 
- .processback::before {
-     content: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+ /* .testimonial-slides-shadow::after {
+     content: '';
      position: absolute;
-     top: -10%;
-     left: -5%;
+     z-index: -1;
+     overflow: hidden;
+     background: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     width: 109%;
+     height: 300%;
+     background-size: contain;
+     top: -90%;
+     background-repeat: no-repeat;
+     background-position: right;
+ } */
+
+ .processright::after {
+     width: 250%;
+     height: 250%;
+
+     position: absolute;
+     content: '';
+     z-index: -1;
+     overflow: hidden;
+     right: 10%;
+     right: -65%;
+
+     background: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: contain;
  }
 
- .processback::after {
+ /* 
+ .processleft::after {
      content: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
      position: absolute;
      top: -10%;
      right: -5%;
      z-index: -2;
- }
+ } */
 
  .clients::after {
-     content: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     content: '';
      position: absolute;
-     top: -140%;
-     right: 60%;
-     z-index: -2;
+     z-index: -1;
+     /* width: 50%; */
+     overflow: hidden;
+     background: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     width: 100%;
+     height: 450%;
+     background-size: contain;
+     right: 15%;
+     background-repeat: no-repeat;
+     background-position: left;
  }
 
- .feedback::after {
-     content: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
-     position: absolute;    
-     top: -120%;
-     left: 20%;
-     z-index: -2;
+  .clients::before {
+     content: '';
+     position: absolute;
+     z-index: -1;
+     overflow: hidden;
+     background: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     width: 109%;
+     height: 300%;
+     background-size: contain;
+     top: 90%;
+     background-repeat: no-repeat;
+     background-position: right;
  }
+
+ /* .feedback::after {
+     width: 350%;
+     height: 250%;
+
+     position: absolute;
+     content: '';
+     z-index: -1;
+     overflow: hidden;
+     right: -130%;
+     top: 0%;
+
+     background: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: contain;
+ } */
+
+ .callbaner {
+     cursor: pointer;
+ }
+
+ .callbaner::after {
+     width: 210%;
+     height: 170%;
+
+     position: absolute;
+     content: '';
+     z-index: -1;
+     overflow: hidden;
+     right: -30%;
+
+     background: url('data:image/svg+xml,<svg width="1465" height="1465" viewBox="0 0 1465 1465" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_2069_611)"><circle cx="732.5" cy="732.5" r="229.5" fill="%23FF6500"/></g><defs><filter id="filter0_f_2069_611" x="0.75" y="0.75" width="1463.5" height="1463.5" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="251.125" result="effect1_foregroundBlur_2069_611"/></filter></defs></svg>');
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-position: right;
+ }
+ .sponsorships {
+    background: -webkit-linear-gradient(90deg, white -41%, #FF6500 200%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
