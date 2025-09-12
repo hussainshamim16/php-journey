@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+body{
+    background-color: #d2c7ff;
+}
+:root {
+    --first: #1a2634;
+    --second: #203e5f;
+    --third: #ffcc00;
+    --fourth: #fee5b1;
+}
+
+.container {
+    width: 1330px;
+}
+
+/* start styling */
+.navbar,
+.footer {
+    background-color: var(--first);
+    color: white;
+}
+
+.custom-btn{
+    background-color: #ffcc00;
+    color: var(--first);
+
+    padding: 10px 40px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+.custom-btn:hover{
+    background-color: var(--second);
+    color: var(--fourth);
+}
+
+.form-heading{
+    
+}
+
+/* book-istings */
+.book-istings{
+    width: 100%;
+    height: 100vh;
+}
