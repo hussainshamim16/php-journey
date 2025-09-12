@@ -2,12 +2,9 @@
 // loops in php for while do while
 
 
-// for loop
+// for loop revarce 
 $table = 0;
 $kable = 10;
-
-
-
 for ($i=10; $i >= $table; $i--) { 
 //   echo $table." x ".$i." = ".$i * $table."<br/>";
 echo $i ."<br>";
@@ -48,3 +45,4 @@ do{
 
 while($l <= 10);
 ?>
+
