@@ -61,6 +61,9 @@ body {
 .vertical-center{
     vertical-align: baseline;
 }
+.header-logo{
+    width: 150px;
+}
 /* ##################################  REGULAR CLASSES */
 /* BOOK ADD FORM */
 .book-istings {
