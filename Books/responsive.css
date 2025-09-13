@@ -10,7 +10,9 @@
     }
 
     .left-content,
-    .right-image {
+    .right-image,
+    .checkout-form,
+    .product-view {
         width: 100%;
     }
 }
