@@ -1,0 +1,16 @@
+@media (max-width: 576px) {
+    .book-card {
+        width: 18rem;
+        margin-bottom: 10px;
+    }
+
+    .single-book-page {
+        width: 100%;
+        height: auto;
+    }
+
+    .left-content,
+    .right-image {
+        width: 100%;
+    }
+}
