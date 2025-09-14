@@ -14,69 +14,69 @@ if (login) {
 
 
 // screen -----
-const screen = [
-    "signuppage",
-    "loginpage",
-    "resetpasswordpage",
-    "profilepage",
-    "addbookpage",
-    "managebookpage",
-    "allbookspage",
-    "singlebookpage",
-    "checkbookpage",
-    "downloadbookpage",
-    "physicalbookpage"
-]
-const pagesId = []
+// const screen = [
+//     "signuppage",
+//     "loginpage",
+//     "resetpasswordpage",
+//     "profilepage",
+//     "addbookpage",
+//     "managebookpage",
+//     "allbookspage",
+//     "singlebookpage",
+//     "checkbookpage",
+//     "downloadbookpage",
+//     "physicalbookpage"
+// ]
+// const pagesId = []
 
-screen.forEach(value => {
-    pagesId.push(document.getElementById(`${value}`),)
-})
-
-// chcek location and path
-const pathOfBrowser = window.location.search;
-
-// after checking only spicefic page render
-pagesId.forEach((value, index) => {
-    if (pathOfBrowser === "/") {
-        console.log("hello")
-    }
-    if (pathOfBrowser == "?" + value.id) {
-        value.classList.add('d-flex')
-    }
-    else {
-        value.classList.add('d-none')
-    }
-})
-
-// console.log(pathOfBrowser === "?"+pagesId[0].id)
-
-
-
-
-// const pathsearch = ["?signup", "?login", "?resetpassword", "?profile", "?addbook", "?managebooks", "?singlebook", "?checkbooks", "?downloadbook", "?physicalbookpage", "?all-books"]
-// for (const key in screen) {
-//     pagesId.push(document.getElementById(`${key}`),)
-// }
-// console.log(pagesId)
-
+// screen.forEach(value => {
+//     pagesId.push(document.getElementById(`${value}`),)
+// })
 
 // // chcek location and path
 // const pathOfBrowser = window.location.search;
-// pathsearch.forEach(value => {
-//     if (value === pathOfBrowser) {
-//         console.log(value)
+
+// // after checking only spicefic page render
+// pagesId.forEach((value, index) => {
+//     if (pathOfBrowser === "/") {
+//         console.log("hello")
+//     }
+//     if (pathOfBrowser == "?" + value.id) {
+//         value.classList.add('d-flex')
+//     }
+//     else {
+//         value.classList.add('d-none')
 //     }
 // })
 
-const clicker = (ele) => {
-    console.log(ele.innerHTML == "login")
-    // window.location.add("/skljl")
+// // console.log(pathOfBrowser === "?"+pagesId[0].id)
 
-    // } else {
-    //     console.log(ele.innerHTML == "login")
-    // }
-}
+
+
+
+// // const pathsearch = ["?signup", "?login", "?resetpassword", "?profile", "?addbook", "?managebooks", "?singlebook", "?checkbooks", "?downloadbook", "?physicalbookpage", "?all-books"]
+// // for (const key in screen) {
+// //     pagesId.push(document.getElementById(`${key}`),)
+// // }
+// // console.log(pagesId)
+
+
+// // // chcek location and path
+// // const pathOfBrowser = window.location.search;
+// // pathsearch.forEach(value => {
+// //     if (value === pathOfBrowser) {
+// //         console.log(value)
+// //     }
+// // })
+
+// const clicker = (ele) => {
+//     console.log(ele.innerHTML == "login")
+//     // window.location.add("/skljl")
+
+//     // } else {
+//     //     console.log(ele.innerHTML == "login")
+//     // }
+// }
 
 
 
