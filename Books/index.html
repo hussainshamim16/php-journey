@@ -19,7 +19,7 @@
     <!-- Start Header -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand text-light" href="#">
+            <a class="navbar-brand text-light" href="./index.html">
                 <img src="./images/logo1.jpg" alt="logo" class="header-logo">
             </a>
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
@@ -30,28 +30,39 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="mainmenu">
                     <li class="nav-item">
-                        <a class="nav-link text-light active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link text-light active" aria-current="page" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Link</a>
+                        <a class="nav-link text-light" href="./pages/book-add.html">Add Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="./pages/manage-books.html">Manage Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="./pages/order-book-info.html">Ordered Books</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link text-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Dropdown
+                            Pages
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="./pages/all-books.html">ALL Book</a></li>
+                            <li><a class="dropdown-item" href="./pages/auth-login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="./pages/auth-signup.html">Sign up</a></li>
+                            <li><a class="dropdown-item" href="./pages/reset-password.html">Sign up</a></li>
+                            <li><a class="dropdown-item" href="./pages/checkout.html">checkout</a></li>
+                            <li><a class="dropdown-item" href="./pages/download-book.html">download</a></li>
+                            <li><a class="dropdown-item" href="./pages/user-profile.html">user profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link text-light disabled" aria-disabled="true">Disabled</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <!-- <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -61,10 +72,10 @@
             <div class="not-login" id="ifLogin">
                 <ul class="list-unstyled m-0 d-flex gap-3 align-items-center">
                     <li>
-                        <a href="?signuppage" class="text-decoration-none text-light text-uppercase">signup</a>
+                        <a href="./pages/auth-signup.html" class="text-decoration-none text-light text-uppercase">signup</a>
                     </li>
                     <li>
-                        <a href="?loginpage" class="text-decoration-none text-light text-uppercase">Login</a>
+                        <a href="./pages/auth-login.html" class="text-decoration-none text-light text-uppercase">Login</a>
                     </li>
                 </ul>
             </div>
@@ -74,110 +85,66 @@
 
     <!-- all books -->
     <div class="container book-redering py-3" id="allbookspage">
-        <!-- search -->
-        <!-- <div class="serch-section row justify-content-center align-items-center">
-            <div class="searchbaar col-lg-4 searchbaar1">
-                <input type="text" class="form-control" name="search-book-name" id="search-book-name"
-                    placeholder="Search Book Name">
-            </div>
-            <div class="searchbaar col-lg-4 searchbaar2">
-                <input type="text" class="form-control" name="search-author-name" id="search-author-name"
-                    placeholder="Search Author Name">
-            </div>
-            <div class="searchbaar col-lg-4 searchbaar3">
-                <input type="text" class="form-control" name="search-class" id="search-class" placeholder="Class">
-            </div>
-        </div> -->
-        <!-- render books -->
 
         <!-- head swiper -->
         <div class="swiper mb-4">
             <h1 class="text-center">swiper</h1>
         </div>
         <!-- head swiper -->
+
+
+        <!-- search -->
+        <div class="serch-section row justify-content-center align-items-center">
+            <div class="searchbaar col-lg-4 searchbaar1">
+                <input type="text" class="form-control" name="search-book-name" id="search-book-name"
+                    placeholder="Search Book Name">
+            </div>
+            <div class="searchbaar col-lg-4 searchbaar2">
+                <select class="form-control">
+                    <option value="">Select Your Class Standerd</option>
+                    <option value="KG 1">KG 1</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="searchbaar col-lg-4 searchbaar2">
+                <select class="form-control">
+                    <option value="">Price</option>
+                    <option value="Rs 100">Rs 100</option>
+                    <option value="Rs 200">Rs 200</option>
+                    <option value="Rs 300">Rs 300</option>
+                    <option value="Rs 400">Rs 400</option>
+                    <option value="Rs 500">Rs 500</option>
+                    <option value="Rs 600">Rs 600</option>
+                    <option value="Rs 700">Rs 700</option>
+                    <option value="Rs 800">Rs 800</option>
+                    <option value="Rs 900">Rs 900</option>
+                    <option value="Rs 1000">Rs 1000</option>
+                </select>
+            </div>
+            <div class="searchbaar col-lg-4 searchbaar2">
+                <select class="form-control">
+                    <option value="">Format</option>
+                    <option value="PDF">PDF</option>
+                    <option value="Physical">Physical</option>
+                </select>
+            </div>
+        </div>
+
+
         <!-- cards 01 -->
-        <div class="container books-collection row pt-3 flex-md-row flex-row flex-wrap justify-content-center gap-md-2">
-            <h1 class="text-dark text-capitalize">online book bazar upto 70% off</h1>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
+        <!-- render books -->
+        <h1 class="text-dark text-center text-capitalize">online book bazar upto 70% off</h1>
+        <div  id='bookContainer1' class="container books-collection row pt-3 flex-md-row flex-row flex-wrap justify-content-center gap-md-2">
+
         </div>
         <!-- cards 01 -->
         <!-- BANNER -->
@@ -186,88 +153,9 @@
         </div>
         <!-- BANNER -->
         <!-- cards 02 -->
-        <div class="container books-collection row pt-3 flex-md-row flex-row flex-wrap justify-content-center gap-md-2">
-            <h1 class="text-dark text-capitalize">online book bazar upto 70% off</h1>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
-            <div class="card book-card py-3">
-                <a href="#">
-                    <img src="./images/book-cover.jpg" class="card-img-top" alt="book-image">
-                </a>
-                <div class="card-body p-3 px-2">
-                    <a href="#" class="card-title">Create Your Own Busniess</a>
-                </div>
-                <p><del class="text-danger">Rs 300</del> <strong>Rs 200</strong></p>
-                <a href="#" class="btn bg-dark text-light w-75">Add To Cart</a>
-            </div>
+        <h1 class="text-dark text-capitalize text-center" >online book bazar upto 70% off</h1>
+        <div id="bookContainer2" class="container books-collection row pt-3 flex-md-row flex-row flex-wrap justify-content-center gap-md-2">
+           
         </div>
         <!-- cards 02 -->
         <!-- head Categories-swiper -->
@@ -281,7 +169,6 @@
 
     <!-- Start Footer -->
     <div class="container-fluid footer h-50 ">
-
         <div class="container">
             <h1 class="text-center">footer</h1>
         </div>

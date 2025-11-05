@@ -20,7 +20,14 @@ body {
     --third: #ffcc00;
     --fourth: #fee5b1;
 }
-
+::-webkit-scrollbar{
+    background-color: var(--second);
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--third);
+    border-radius: 20px;
+    box-shadow: 0px 50px 30px var(--fourth);
+}
 /* ############################################# GLOBEL CLASSES  */
 .container {
     width: 1330px;
@@ -48,6 +55,9 @@ body {
 
 .form-heading {
     text-decoration: underline;
+}
+.form-control {
+appearance: auto;
 }
 
 .book-card {
@@ -78,7 +88,9 @@ body {
     width: 100%;
     height: auto;
 }
-
+.searchbaar{
+    width: 25%;
+}
 /* ALL BOOK PAGE */
 
 /* SINGLE BOOK PAGE */
@@ -117,4 +129,99 @@ body {
 }
 .manage-table td{
     border: 2px solid var(--second);
+}
+
+
+/* ############################################# ADMIN DASHBOARD  */
+section.admin-dash{
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+section.admin-dash .sidebar{
+    background-color: var(--second);
+    height: 90%;
+    width: 20%;
+    border-radius: 20px ;
+    margin: 10px 20px;
+
+    padding:20px 30px 20px 30px ;
+
+
+    justify-content: space-between;
+    color: white; 
+    flex-direction: column;
+    text-align: left;
+
+    overflow: hidden;
+
+    transition: 1s;
+}
+section.admin-dash .sidebar .logo{
+    font-size: 30px;
+}
+section.admin-dash .sidebar ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+section.admin-dash .sidebar ul li{
+ font-size: 20px ;
+ text-transform: capitalize;
+}
+
+section.admin-dash .content-area{
+    background-color: var(--third);
+    height: 90%;
+    width: 75%;
+    border-radius: 20px ;
+    margin: 10px 20px;
+}
+
+/* find-container */
+.find-container{
+    height: 100%;
+}
+.find-container div.sidebar{
+    width: 20%;
+    background-color: #ffffff;
+    height: 100%;
+    border-radius: 10px;
+}
+.find-container div.mainScreen{
+    width: 80%;
+    background-color: #c3beff;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+.find-container div.mainScreen .top{
+    height: 600px;
+    background-color: var(--first);
+}
+
+.find-container div.mainScreen .top .box{
+    width: 20%;
+    height: 300px;
+    background-color: red;
+}
+.find-container div.mainScreen .center{
+    background-color: var(--third);
+}
+.find-container div.mainScreen .center ul{
+margin: 10px 0px;
+list-style-type: none;
+padding: 20px 10px;
+}
+
+.find-container div.mainScreen .center ul li{
+    background-color: var(--second);
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 100%;
+}
+.find-container div.mainScreen .center ul li a{
+    text-decoration: none;
+    color: var(--fourth);
+    width: 100%;
+    text-align: left;
 }
