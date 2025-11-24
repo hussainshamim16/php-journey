@@ -1,0 +1,2676 @@
+<?php
+if ( is_plugin_active( 'js_composer/js_composer.php' ) ) {
+    
+add_action( 'vc_before_init', 'your_name_integrateWithVC' );
+function your_name_integrateWithVC() {
+ vc_map( array(
+  "name" => __( "Bar tag test", "my-text-domain" ),
+  "base" => "bartag",
+  "class" => "",
+  "icon" => "my_bartag", // New param added
+  "category" => __( "Content", "my-text-domain"),
+  'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+  "params" => array(
+ array(
+  "type" => "textfield",
+  "holder" => "div",
+  "class" => "",
+  "heading" => __( "Text", "my-text-domain" ),
+  "param_name" => "foo",
+  "value" => __( "Default param value", "my-text-domain" ),
+  "description" => __( "Description for foo param.", "my-text-domain" ),
+ ),
+  ),
+ ) );
+}
+
+
+/*Free Bets Composer*/
+add_shortcode( 'free_bats', 'free_bats_fe' );
+function free_bats_fe( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+   $output ="";
+    $row_bg_color   = $atts['row_bg_color'];
+    $imageSrc       = wp_get_attachment_image_src($atts['logo'], 'full');
+    $textOne        = $atts['bet_text_one'];
+    $textTwo        = $atts['bet_text_two'];
+    $textThree      = $atts['bet_text_three'];
+    $textFour       = $atts['bet_text_four'];
+
+
+    $btn        = vc_build_link( $atts['btn_link'] );
+    $button_link   = $btn['url'];
+    $button_text  = $btn['title'];
+
+    $output     .=  '
+                        <div class="row free-bets d-flex align-items-center pt-3 pb-3" style="background-color:'.$atts['row_bg_color'].';">
+                            <div class="col-md-3">
+                                <img src="'.$imageSrc[0].'" class="img-fluid logo-">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-12 gColor d-flex justify-content-between d-flex-570" style="font-size: 20px;">
+                                        <div class="upper-text"><h5>'.$textOne.'</h5></div>
+                                        <div class="upper-text"><h5>'.$textTwo.'</h5></div>
+                                        <div class="upper-text"><h5>'.$textThree.'</h5></div>
+                                    </div>
+                                    <div class="col-md-12 text-center gColor upper-text"><p>'.$textFour.'</p></div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 text-right">
+                                <a href="'.$button_link.'" class="btn btn-batting">'. $button_text.'</a>
+                            </div>
+                        </div>
+                    '; 
+    return $output;
+}
+add_action( 'vc_before_init', 'free_bats_be' );
+function free_bats_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Free Bets", "batting-domain" ),
+            "base" => "b_free_bats",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                               
+                            array(
+                                'type' => 'colorpicker',
+                                'heading' => esc_html__( 'Select background Color for Row'),
+                                'param_name' => 'row_bg_color',
+                                'description' => esc_html__( 'Select first color for gradient.', 'js_composer' ),
+                                'value' => '',
+                            ),
+                             array(
+                                    "type" => "attach_image",
+                                    "holder" => "div",
+                                    "class" => "",
+                                    "heading" => __( "Select Logo"),
+                                    "param_name" => "logo",
+                                    "value" => ''
+                                ),                      
+                            array(
+                                'type' => 'textfield',
+                                'heading' => 'Text 1',
+                                'param_name' => 'bet_text_one',
+                                'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                            ),
+                            array(
+                                'type' => 'textfield',
+                                'heading' => 'Text 2',
+                                'param_name' => 'bet_text_two',
+                                'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                            ),
+                            array(
+                                'type' => 'textfield',
+                                'heading' => 'Text 3',
+                                'param_name' => 'bet_text_three',
+                                'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                            ),
+                            array(
+                                'type' => 'textfield',
+                                'heading' => 'Text 4',
+                                'param_name' => 'bet_text_four',
+                                'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                            ),
+
+                            array(
+                                'type' => 'vc_link',
+                                'heading' => 'Button Link',
+                                'param_name' => 'btn_link',
+                                'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                            ),
+                    )
+                ) 
+            );
+}
+/*Free Bets Composer*/
+
+
+/*Free Bets Composer*/
+// add_shortcode( 'reviews', 'reviews' );
+// function reviews( $atts ) 
+// {
+//     extract( shortcode_atts( array(
+//     ), 
+//     $atts ) );
+//    $output ="";
+//     $row_bg_color           = $atts['row_bg_color'];
+//     $imageSrc               = wp_get_attachment_image_src($atts['logo'], 'full');
+//     $number_reviews         = $atts['number_reviews'];
+//     $reviews_star           = $atts['reviews_star'];
+//     $star                   = "";
+//     for($i=0; $i<$reviews_star; $i++){
+//         $star .='<i class="fa fa-star" aria-hidden="true"></i>';
+//     }
+//     $empty_star = 5-$reviews_star ;
+//     for($i=0; $i<$empty_star; $i++){
+//         $star .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+//     }
+//     //<i class="fa fa-check" aria-hidden="true"></i>
+//     $reviews_app            = $atts['reviews_app'];
+//     if($reviews_app == "Yes"){$reviews_app ='<i class="fa fa-check" aria-hidden="true"></i>';}
+//     else{$reviews_app ='<i class="fa fa-times" aria-hidden="true"></i>';}
+//     $reviews_cashout        = $atts['reviews_cashout'];
+//     if($reviews_cashout == "Yes"){$reviews_cashout ='<i class="fa fa-check" aria-hidden="true"></i>';}
+//     else{$reviews_cashout ='<i class="fa fa-times" aria-hidden="true"></i>';}
+//     $reviews_signup         = $atts['reviews_signup'];
+//     if($reviews_signup == "Yes"){$reviews_signup ='<i class="fa fa-check" aria-hidden="true"></i>';}
+//     else{$reviews_signup ='<i class="fa fa-times" aria-hidden="true"></i>';}
+//     $reviews_inplay         = $atts['reviews_inplay'];
+//     if($reviews_inplay == "Yes"){$reviews_inplay ='<i class="fa fa-check" aria-hidden="true"></i>';}
+//     else{$reviews_inplay ='<i class="fa fa-times" aria-hidden="true"></i>';}
+
+//     $btn        = vc_build_link( $atts['btn_link'] );
+//     $btn_link   = $btn['url'];
+//     $btn_title  = $btn['title'];
+
+//     $read        = vc_build_link( $atts['read_link'] );
+//     $read_link   = $read['url'];
+//     $read_text  = $read['title'];
+
+//     $output     .=  '
+//     <div class="row d-flex align-items-center" style="background-color:'.$atts['row_bg_color'].';">
+//     <div class="col-md-3">
+//         <img src="'.$imageSrc[0].'" class="img-fluid">
+//     </div>
+//     <div class="col-md-2 bgDBlue wColor text-center star-div">
+//         '.$number_reviews .' reviews
+//          <span class="review-star d-block">'.$star .'</span>
+//     </div>
+//     <div class="col-md-1 text-right">'.$reviews_app.'</div>
+//     <div class="col-md-1 text-right">'.$reviews_cashout.'</div>
+//     <div class="col-md-1 text-right">'.$reviews_inplay.'</div>
+//     <div class="col-md-1 text-right">'.$reviews_signup.'</div>
+//     <div class="col-md-3 text-right read-more">
+//                 <a href="'.$btn_link.'" class="btn btn-batting btn-review">'. $btn_title.'</a>
+//                 <span class="read-more-btn d-block bColor"><a href ="'.$read_link.'"class="bColor">'.$read_text.'</a></span>
+//     </div>
+// </div>
+//                     '; 
+//     return $output;
+// }
+// add_action( 'vc_before_init', 'reviews_be' );
+// function reviews_be()
+// {
+//     vc_map( 
+//         array(
+//             "name" => __( "Reviews", "batting-domain" ),
+//             "base" => "r_free_bats",
+//             "class" => "",
+//             "category" => __( "Devmont Digital", "batting-domain"),
+//             "icon" => "my_bartag",
+//             'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+//             "params" => array(
+                               
+//                             array(
+//                                 'type' => 'colorpicker',
+//                                 'heading' => esc_html__( 'Select background Color for Row'),
+//                                 'param_name' => 'row_bg_color',
+//                                 'description' => esc_html__( 'Select first color for gradient.', 'js_composer' ),
+//                                 'value' => '',
+//                             ),
+//                              array(
+//                                     "type" => "attach_image",
+//                                     "holder" => "div",
+//                                     "class" => "",
+//                                     "heading" => __( "Select Logo"),
+//                                     "param_name" => "logo",
+//                                     "value" => ''
+//                                 ),                      
+//                             array(
+//                                 'type' => 'textfield',
+//                                 'heading' => 'Number of Reviews',
+//                                 'param_name' => 'number_reviews',
+//                                 'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+//                             ),
+                     
+//                             array(
+//                                 'type' => 'dropdown',
+//                                 'heading' => esc_html__( 'Number of fill Star'),
+//                                 'param_name' => 'reviews_star',
+//                                 'description' => esc_html__( 'Total FIVE Star only'),
+//                                 'value' => array(
+//                                     esc_html__( '-1') => 'Select Number of Star',
+//                                     esc_html__( '1') => '1',
+//                                     esc_html__( '2') => '2',
+//                                     esc_html__( '3') => '3',
+//                                     esc_html__( '4') => '4',
+//                                     esc_html__( '5') => '5',
+//                                 ),
+//                             ),
+
+
+//                             array(
+//                                 'type' => 'dropdown',
+//                                 'heading' => esc_html__( 'APP'),
+//                                 'param_name' => 'reviews_app',
+//                                 'value' => array(
+//                                     esc_html__( '-1') => 'Select any APP',
+//                                     esc_html__( 'Yes') => 'Yes',
+//                                     esc_html__( 'No') => 'No',
+//                                 ),
+//                             ),
+
+//                             array(
+//                                 'type' => 'dropdown',
+//                                 'heading' => esc_html__( 'CASHOUT'),
+//                                 'param_name' => 'reviews_cashout',
+//                                 'value' => array(
+//                                     esc_html__( '-1') => 'Select any CASHOUT',
+//                                     esc_html__( 'Yes') => 'Yes',
+//                                     esc_html__( 'No') => 'No',
+//                                 ),
+//                             ),
+
+//                             array(
+//                                 'type' => 'dropdown',
+//                                 'heading' => esc_html__( 'SIGN UP'),
+//                                 'param_name' => 'reviews_signup',
+//                                 'value' => array(
+//                                     esc_html__( '-1') => 'Select any SIGN UP',
+//                                     esc_html__( 'Yes') => 'Yes',
+//                                     esc_html__( 'No') => 'No',
+//                                 ),
+//                             ),
+
+//                             array(
+//                                 'type' => 'dropdown',
+//                                 'heading' => esc_html__( 'IN PLAY'),
+//                                 'param_name' => 'reviews_inplay',
+//                                 'value' => array(
+//                                     esc_html__( '-1') => 'Select any IN PLAY',
+//                                     esc_html__( 'Yes') => 'Yes',
+//                                     esc_html__( 'No') => 'No',
+//                                 ),
+//                             ),
+
+                           
+
+//                             array(
+//                                 'type' => 'vc_link',
+//                                 'heading' => 'Button Link',
+//                                 'param_name' => 'btn_link',
+//                                 'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+//                             ),
+
+//                             array(
+//                                 'type' => 'vc_link',
+//                                 'heading' => 'Read More Link',
+//                                 'param_name' => 'read_link',
+//                                 'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+//                             ),
+//                     )
+//                 ) 
+//             );
+// }
+/*Free Bets Composer*/
+
+
+/*Heading - 1*/
+add_shortcode( 'heading_betting', 'custom_heading' );
+function custom_heading( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+
+    $heading_one         = $atts['heading_one'];
+    $heading_one_size    = $atts['heading_one_size'];
+    $heading_two         = $atts['heading_two'];
+    $heading_two_size    = $atts['heading_two_size'];
+    $heading_id  = "";
+    if(isset($atts['heading_id'])){
+       $heading_id          = $atts['heading_id'];
+    }
+    $output     .=  '
+    <h1 id="'.$heading_id.'" class="bet-widget-heading pb-1"><span class="blueText" style="font-size:'.$heading_one_size.'px;">'.$heading_one.'</span> 
+    <span class="redText position-relative text-upper" style="font-size:'.$heading_two_size.'px;">'.$heading_two.'<img src="'.get_template_directory_uri().'/assets/images/star.png" class="star-absolute"></span></h1>'; 
+    return $output;
+}
+add_action( 'vc_before_init', 'custom_heading_be' );
+function custom_heading_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Heading - 1", "batting-domain" ),
+            "base" => "heading_betting",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+               
+                                array(
+                                "type" => "textfield",
+                                "holder" => "div",
+                                "class" => "vc_col-sm-4 pb-4",
+                                "heading" => __( "First Heading"),
+                                "param_name" => "heading_one",
+                                "value" => ''
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'First Heading Size',
+                                    'param_name' => 'heading_one_size',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    "type" => "textfield",
+                                    "holder" => "div",
+                                    "class" => "vc_col-sm-4",
+                                    "heading" => __( "Second  Heading"),
+                                    "param_name" => "heading_two",
+                                    "value" => ''
+                                    ),
+                                array(
+                                    "type" => "textfield",
+                                    "heading" => __( "Second Heading Size"),
+                                    "param_name" => "heading_two_size",
+                                    ),
+                                    array(
+                                        "type" => "textfield",
+                                        "holder" => "span",
+                                        "heading" => __( "Id"),
+                                        "param_name" => "heading_id",
+                                        ),
+                               
+                                )
+                ) 
+            );
+}
+/*Heading-1 End*/
+
+/*Heading - 2 */
+add_shortcode( 'heading_betting_two', 'custom_heading_two' );
+function custom_heading_two( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+
+    $heading_one         = $atts['heading_one'];
+    $heading_one_size    = $atts['heading_one_size'];
+    $heading_two         = $atts['heading_two'];
+    $heading_two_size    = $atts['heading_two_size'];
+    $heading_id  = "";
+    if(isset($atts['heading_id'])){
+       $heading_id          = $atts['heading_id'];
+    }
+    $output     .=  '
+    <h2 id="'.$heading_id.'" class="bet-widget-heading pb-1"><span class="blueText" style="font-size:'.$heading_one_size.'px;">'.$heading_one.'</span> 
+    <span class="redText position-relative text-upper" style="font-size:'.$heading_two_size.'px;">'.$heading_two.'<img src="'.get_template_directory_uri().'/assets/images/star.png" class="star-absolute"></span></h2>'; 
+    return $output;
+}
+add_action( 'vc_before_init', 'custom_heading_two_be' );
+function custom_heading_two_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Heading - 2", "batting-domain" ),
+            "base" => "heading_betting_two",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+               
+                                array(
+                                "type" => "textfield",
+                                "holder" => "div",
+                                "class" => "vc_col-sm-4 pb-4",
+                                "heading" => __( "First Heading"),
+                                "param_name" => "heading_one",
+                                "value" => ''
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'First Heading Size',
+                                    'param_name' => 'heading_one_size',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    "type" => "textfield",
+                                    "holder" => "div",
+                                    "class" => "vc_col-sm-4",
+                                    "heading" => __( "Second  Heading"),
+                                    "param_name" => "heading_two",
+                                    "value" => ''
+                                    ),
+                                array(
+                                    "type" => "textfield",
+                                    "heading" => __( "Second Heading Size"),
+                                    "param_name" => "heading_two_size",
+                                    ),
+                                    array(
+                                        "type" => "textfield",
+                                        "holder" => "span",
+                                        "heading" => __( "Id"),
+                                        "param_name" => "heading_id",
+                                        ),
+                               
+                                )
+                ) 
+            );
+}
+/*Heading-2 End*/
+
+
+
+/*Heading - 3 */
+add_shortcode( 'heading_betting_three', 'custom_heading_three' );
+function custom_heading_three( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+
+    $heading_one         = $atts['heading_one'];
+    $heading_one_size    = $atts['heading_one_size'];
+    $heading_two         = $atts['heading_two'];
+    $heading_two_size    = $atts['heading_two_size'];
+    $heading_id  = "";
+    if(isset($atts['heading_id'])){
+       $heading_id          = $atts['heading_id'];
+    }
+    $output     .=  '
+    <h3 id="'.$heading_id.'" class="bet-widget-heading pb-1"><span class="blueText" style="font-size:'.$heading_one_size.'px;">'.$heading_one.'</span> 
+    <span class="redText position-relative text-upper" style="font-size:'.$heading_two_size.'px;">'.$heading_two.'<img src="'.get_template_directory_uri().'/assets/images/star.png" class="star-absolute"></span></h3>'; 
+    return $output;
+}
+add_action( 'vc_before_init', 'custom_heading_three_be' );
+function custom_heading_three_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Heading - 3", "batting-domain" ),
+            "base" => "heading_betting_three",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+               
+                                array(
+                                "type" => "textfield",
+                                "holder" => "div",
+                                "class" => "vc_col-sm-4 pb-4",
+                                "heading" => __( "First Heading"),
+                                "param_name" => "heading_one",
+                                "value" => ''
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'First Heading Size',
+                                    'param_name' => 'heading_one_size',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    "type" => "textfield",
+                                    "holder" => "div",
+                                    "class" => "vc_col-sm-4",
+                                    "heading" => __( "Second  Heading"),
+                                    "param_name" => "heading_two",
+                                    "value" => ''
+                                    ),
+                                array(
+                                    "type" => "textfield",
+                                    "heading" => __( "Second Heading Size"),
+                                    "param_name" => "heading_two_size",
+                                    ),
+                                    array(
+                                        "type" => "textfield",
+                                        "holder" => "span",
+                                        "heading" => __( "Id"),
+                                        "param_name" => "heading_id",
+                                        ),
+                               
+                                )
+                ) 
+            );
+}
+/*Heading-3 End*/
+
+
+
+/*Heading - 4 */
+add_shortcode( 'heading_betting_four', 'custom_heading_four' );
+function custom_heading_four( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+
+    $heading_one         = $atts['heading_one'];
+    $heading_one_size    = $atts['heading_one_size'];
+    $heading_two         = $atts['heading_two'];
+    $heading_two_size    = $atts['heading_two_size'];
+    $heading_id  = "";
+    if(isset($atts['heading_id'])){
+       $heading_id          = $atts['heading_id'];
+    }
+    $output     .=  '
+    <h4 id="'.$heading_id.'" class="bet-widget-heading pb-1"><span class="blueText" style="font-size:'.$heading_one_size.'px;">'.$heading_one.'</span> 
+    <span class="redText position-relative text-upper" style="font-size:'.$heading_two_size.'px;">'.$heading_two.'<img src="'.get_template_directory_uri().'/assets/images/star.png" class="star-absolute"></span></h4>'; 
+    return $output;
+}
+add_action( 'vc_before_init', 'custom_heading_four_be' );
+function custom_heading_four_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Heading - 4", "batting-domain" ),
+            "base" => "heading_betting_four",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+               
+                                array(
+                                "type" => "textfield",
+                                "holder" => "div",
+                                "class" => "vc_col-sm-4 pb-4",
+                                "heading" => __( "First Heading"),
+                                "param_name" => "heading_one",
+                                "value" => ''
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'First Heading Size',
+                                    'param_name' => 'heading_one_size',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    "type" => "textfield",
+                                    "holder" => "div",
+                                    "class" => "vc_col-sm-4",
+                                    "heading" => __( "Second  Heading"),
+                                    "param_name" => "heading_two",
+                                    "value" => ''
+                                    ),
+                                array(
+                                    "type" => "textfield",
+                                    "heading" => __( "Second Heading Size"),
+                                    "param_name" => "heading_two_size",
+                                    ),
+                                    array(
+                                        "type" => "textfield",
+                                        "holder" => "span",
+                                        "heading" => __( "Id"),
+                                        "param_name" => "heading_id",
+                                        ),
+                               
+                                )
+                ) 
+            );
+}
+/*Heading-4 End*/
+
+
+/*Heading - 5 */
+add_shortcode( 'heading_betting_five', 'custom_heading_five' );
+function custom_heading_five( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+
+    $heading_one         = $atts['heading_one'];
+    $heading_one_size    = $atts['heading_one_size'];
+    $heading_two         = $atts['heading_two'];
+    $heading_two_size    = $atts['heading_two_size'];
+    $heading_id  = "";
+    if(isset($atts['heading_id'])){
+       $heading_id          = $atts['heading_id'];
+    }
+    $output     .=  '
+    <h5 id="'.$heading_id.'" class="bet-widget-heading pb-1"><span class="blueText" style="font-size:'.$heading_one_size.'px;">'.$heading_one.'</span> 
+    <span class="redText position-relative text-upper" style="font-size:'.$heading_two_size.'px;">'.$heading_two.'<img src="'.get_template_directory_uri().'/assets/images/star.png" class="star-absolute"></span></h5>'; 
+    return $output;
+}
+add_action( 'vc_before_init', 'custom_heading_five_be' );
+function custom_heading_five_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Heading - 5", "batting-domain" ),
+            "base" => "heading_betting_five",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+               
+                                array(
+                                "type" => "textfield",
+                                "holder" => "div",
+                                "class" => "vc_col-sm-4 pb-4",
+                                "heading" => __( "First Heading"),
+                                "param_name" => "heading_one",
+                                "value" => ''
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'First Heading Size',
+                                    'param_name' => 'heading_one_size',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    "type" => "textfield",
+                                    "holder" => "div",
+                                    "class" => "vc_col-sm-4",
+                                    "heading" => __( "Second  Heading"),
+                                    "param_name" => "heading_two",
+                                    "value" => ''
+                                    ),
+                                array(
+                                    "type" => "textfield",
+                                    "heading" => __( "Second Heading Size"),
+                                    "param_name" => "heading_two_size",
+                                    ),
+                                    array(
+                                        "type" => "textfield",
+                                        "holder" => "span",
+                                        "heading" => __( "Id"),
+                                        "param_name" => "heading_id",
+                                        ),
+                               
+                                )
+                ) 
+            );
+}
+/*Heading-5 End*/
+
+
+/*Heading - 6 */
+add_shortcode( 'heading_betting_six', 'custom_heading_six' );
+function custom_heading_six( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+
+    $heading_one         = $atts['heading_one'];
+    $heading_one_size    = $atts['heading_one_size'];
+    $heading_two         = $atts['heading_two'];
+    $heading_two_size    = $atts['heading_two_size'];
+    $heading_id  = "";
+    if(isset($atts['heading_id'])){
+       $heading_id          = $atts['heading_id'];
+    }
+    $output     .=  '
+    <h6 id="'.$heading_id.'" class="bet-widget-heading pb-1"><span class="blueText" style="font-size:'.$heading_one_size.'px;">'.$heading_one.'</span> 
+    <span class="redText position-relative text-upper" style="font-size:'.$heading_two_size.'px;">'.$heading_two.'<img src="'.get_template_directory_uri().'/assets/images/star.png" class="star-absolute"></span></h6>'; 
+    return $output;
+}
+add_action( 'vc_before_init', 'custom_heading_six_be' );
+function custom_heading_six_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Heading - 6", "batting-domain" ),
+            "base" => "heading_betting_six",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+               
+                                array(
+                                "type" => "textfield",
+                                "holder" => "div",
+                                "class" => "vc_col-sm-4 pb-4",
+                                "heading" => __( "First Heading"),
+                                "param_name" => "heading_one",
+                                "value" => ''
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'First Heading Size',
+                                    'param_name' => 'heading_one_size',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    "type" => "textfield",
+                                    "holder" => "div",
+                                    "class" => "vc_col-sm-4",
+                                    "heading" => __( "Second  Heading"),
+                                    "param_name" => "heading_two",
+                                    "value" => ''
+                                    ),
+                                array(
+                                    "type" => "textfield",
+                                    "heading" => __( "Second Heading Size"),
+                                    "param_name" => "heading_two_size",
+                                    ),
+                                    array(
+                                        "type" => "textfield",
+                                        "holder" => "span",
+                                        "heading" => __( "Id"),
+                                        "param_name" => "heading_id",
+                                        ),
+                               
+                                )
+                ) 
+            );
+}
+/*Heading-6 End*/
+/*Button */
+add_shortcode( 'button_betting', 'custom_button' );
+function custom_button( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+
+     $btn           = vc_build_link( $atts['btn_link'] );
+     $button_link   = $btn['url'];
+     $button_text   = $btn['title'];
+     $button_color  = $btn['button_color'];
+     $output     .=  '<a href="'.$button_link.'" class="btn btn-bet redBtn '.$greenBtn.'">'. $button_text.'</a>';
+     return $output;
+}
+add_action( 'vc_before_init', 'custom_button_be' );
+function custom_button_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Button", "batting-domain" ),
+            "base" => "button_betting",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                                array(
+                                    'type' => 'vc_link',
+                                    'heading' => 'Button Link',
+                                    'param_name' => 'btn_link',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__( 'Button Color'),
+                                    'param_name' => 'button_color',
+                                    'value' => array(
+                                        esc_html__( 'Red Shade') => 'Red Shade',
+                                        esc_html__( 'Green Shade') => 'Green Shade',
+                                    ),
+                                ),
+                            )
+                ) 
+            );
+}
+/*Button End*/
+
+/*Widget # 1 */
+add_shortcode( 'widget_one', 'custom_widget_one' );
+function custom_widget_one( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+    $logo          = wp_get_attachment_image_src($atts['logo'], 'full')[0];
+    $operator_name = $atts['operator_name'];    //must be in heading two
+    $total_score   = $atts['total_score'];
+    $text_one      = $atts['text_one'];
+    $reviews_star  = $atts['reviews_star'];
+    
+      
+      
+    $fillStar      = floor($reviews_star);
+    $emptyStar = floor(5-$reviews_star);
+    $halfStar      = 5-($fillStar+$emptyStar);
+    // $output .= "Selected Star: ".$reviews_star."<br>" ;
+    // $output .= "Fill Star: ".$fillStar."<br>" ;
+    // $output .= "Empty Star: ".$emptyStar."<br>" ;
+    // $output .= "Half Star: ".$halfStar."<br>" ;
+
+    $star          = "";                       //use this to show star
+    for($i=0; $i<$fillStar; $i++)
+    {
+        $star .='<i class="fa fa-star" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$halfStar; $i++)
+    {
+        $star .='<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$emptyStar; $i++)
+    {
+        $star .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+    }
+
+
+    //   $star          = "";                       //use this to show star
+    //   for($i=0; $i<$reviews_star; $i++){
+    //       $star .='<i class="fa fa-star" aria-hidden="true"></i>';
+    //   }
+    //   $empty_star = 5-$reviews_star ;
+    //   for($i=0; $i<$empty_star; $i++){
+    //       $star .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+    //   }
+
+      $output     .= '
+                <div class="widgetWrapper widgetOne">
+                     <div class="row align-items-center">
+                        <div class="col-md-5">
+                            <div class="widgetOneImg"><img class="img-fluid img-thumbnail" src="'.$logo.'"/ alt="logo"></div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="widgetOneContent">
+                                <h2 class="blueText widgetOneHead">'.$operator_name.'</h2>
+                                <div class="rating-star"><span class="widgetOneStars">'.$star.'</span> <span class="rating">Users Rating <span class="numbers">('.$total_score.')</span></span> </div>
+                                <p class="pt-2">'.$text_one.'</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            ';
+
+     return $output;
+}
+add_action( 'vc_before_init', 'custom_widget_one_be' );
+function custom_widget_one_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Name - Widget # 01", "batting-domain" ),
+            "base" => "widget_one",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                                array(
+                                    "type" => "attach_image",
+                                    "heading" => __( "Select Logo"),
+                                    "param_name" => "logo",
+                                    "value" => ''
+                                ), 
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Operators Name',
+                                    'param_name' => 'operator_name',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Total Score',
+                                    'param_name' => 'total_score',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__( 'Number of fill Star'),
+                                    'param_name' => 'reviews_star',
+                                    'description' => esc_html__( 'Total FIVE Star only'),
+                                    'value' => array(
+                                        esc_html__( '-1') => 'Select Number of Star',
+                                        esc_html__( '1') => '1',
+                                        esc_html__( '1.5') => '1.5',
+                                        esc_html__( '2') => '2',
+                                        esc_html__( '2.5') => '2.5',
+                                        esc_html__( '3') => '3',
+                                        esc_html__( '3.5') => '3.5',
+                                        esc_html__( '4') => '4',
+                                        esc_html__( '4.5') => '4.5',
+                                        esc_html__( '5') => '5',
+                                    )
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Text',
+                                    'param_name' => 'text_one',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                        )
+                    )
+                );
+            
+}
+/*Widget # 1 End */
+
+/*Widget # 2 */
+add_shortcode( 'widget_two', 'custom_widget_two' );
+function custom_widget_two( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	  $output ="";
+      $op_name_one          = $atts['operator_name_one'];     //must be in heading two
+      $op_name_two          = $atts['operator_name_two'];    //must be in heading two
+      $text  ="";
+      if(isset($atts['text'])){$text                 = $atts['text']; }
+      $btn_one              = vc_build_link( $atts['btn_one'] );
+      $button_link_one      = $btn_one['url'];
+      $button_text_one      = $btn_one['title'];
+      $button_target_one    = $btn_one['target'];
+      $sub_heading_style    =  $atts['sub_heading_style'];
+      $btn_two              = vc_build_link( $atts['btn_two'] );
+      $button_link_two      = $btn_two['url'];
+      $button_text_two      = $btn_two['title'];
+      $button_target_two    = $btn_two['target'];
+      $btn_three            = vc_build_link( $atts['btn_three'] );
+      $button_link_three    = $btn_three['url'];
+      $button_text_three    = $btn_three['title'];
+      $button_target_three  = $btn_two['target'];
+    
+      $heading = "";
+      if($sub_heading_style == "Red"){
+        $heading = '    <h1 class="bet-widget-heading pb-3"><span class="blueText">'.$op_name_one.'</span> 
+        <span class="redText position-relative text-upper">'.$op_name_two.'<img src="'.get_template_directory_uri().'/assets/images/star.png" class="star-absolute"></span></h1>';
+      }
+      else{
+        $heading = '<h2 class="widgetTwoHead">'.$op_name_one.' <span class="blueText widgetTwoSpan">'.$op_name_two .'</span></h2>';
+      }
+
+        $output     .=  '
+        <div class="widgetWrapper widgetTwo">    
+                <div class="row">
+                    <div class="col-sm-12">
+                        '.$heading.'                      
+                        <p class="text-center grayColor">'.$text.'</p>
+                    </div>
+                    
+                    <div class="col-sm-12 text-center widgetTwoButton">
+                        <div class="borderOuter"><a class="btn widgetTwobtn" href="'.$button_link_one .'" target="'.$button_target_one.'">'.$button_text_one.'</a></div>
+                        <div class="borderOuter"><a class="btn widgetTwobtn" href="'.$button_link_two .'" target="'.$button_target_two.'">'.$button_text_two.'</a></div>
+                        <div class="borderOuter"><a class="btn widgetTwobtn" href="'.$button_link_three .'" target="'.$button_target_three.'">'.$button_text_three.'</a></div>
+                    </div>
+                   
+                </div>
+            </div>    
+        ';
+        return $output;
+}
+add_action( 'vc_before_init', 'custom_widget_two_be' );
+function custom_widget_two_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Links box - Widget # 02", "batting-domain" ),
+            "base" => "widget_two",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array( 
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Heading Text 1',
+                                    'param_name' => 'operator_name_one',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Sub Heading',
+                                    'param_name' => 'operator_name_two',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__( 'Sub Heading Style'),
+                                    'param_name' => 'sub_heading_style',
+                                    'value' => array(
+                                        esc_html__( '-1') => 'Select Sub Heading Style',
+                                        esc_html__( 'Red') => 'Red',
+                                        esc_html__( 'Blue') => 'Blue',
+                                    )
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Text',
+                                    'param_name' => 'text',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'vc_link',
+                                    'heading' => 'Button One',
+                                    'param_name' => 'btn_one',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'vc_link',
+                                    'heading' => 'Button Two',
+                                    'param_name' => 'btn_two',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'vc_link',
+                                    'heading' => 'Button Three',
+                                    'param_name' => 'btn_three',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                               
+                            
+                        )
+                    )
+                );
+            
+}
+/*Widget # 2 End */
+
+
+/*Widget # 3 */
+add_shortcode( 'widget_three', 'custom_widget_three' );
+function custom_widget_three( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+    
+    // $fillStar      = floor($reviews_star);
+    // $emptyStar     = floor(5-$reviews_star);
+    // $halfStar      = 5-($fillStar+$emptyStar);
+    // // $output .= "Selected Star: ".$reviews_star."<br>" ;
+    // // $output .= "Fill Star: ".$fillStar."<br>" ;
+    // // $output .= "Empty Star: ".$emptyStar."<br>" ;
+    // // $output .= "Half Star: ".$halfStar."<br>" ;
+
+    // $star          = "";                       //use this to show star
+    // for($i=0; $i<$fillStar; $i++)
+    // {
+    //     $star .='<i class="fa fa-star" aria-hidden="true"></i>';
+    // }
+
+    // for($i=0; $i<$halfStar; $i++)
+    // {
+    //     $star .='<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+    // }
+
+    // for($i=0; $i<$emptyStar; $i++)
+    // {
+    //     $star .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+    // }
+     
+     
+     
+    $c_name_one             = $atts['c_name_one'];  
+    $n_reviews_one          = $atts['n_reviews_one'];
+    $total_score_label      = $atts['total_score_label'];
+    if($total_score_label == "" || empty($total_score_label) ){
+        $total_score_label = "Total Score";
+    }
+    
+    
+    $r_star_one ="";
+    if(isset($atts['r_star_one'])){$r_star_one           = $atts['r_star_one'];}
+
+    $fillStar      = floor($r_star_one);
+    $emptyStar     = floor(5-$r_star_one);
+    $halfStar      = 5-($fillStar+$emptyStar);
+
+    $star_one          = "";                       //use this to show star
+    for($i=0; $i<$fillStar; $i++)
+    {
+        $star_one .='<i class="fa fa-star" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$halfStar; $i++)
+    {
+        $star_one .='<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$emptyStar; $i++)
+    {
+        $star_one .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+    }
+  
+
+
+
+    $c_name_two           = $atts['c_name_two'];  
+    $n_reviews_two        = $atts['n_reviews_two'];
+    $r_star_two= "";
+    if(isset($atts['r_star_two'])){$r_star_two           = $atts['r_star_two'];}
+    
+    $fillStar      = floor($r_star_two);
+    $emptyStar     = floor(5-$r_star_two);
+    $halfStar      = 5-($fillStar+$emptyStar);
+
+    $star_two          = "";                       //use this to show star
+    for($i=0; $i<$fillStar; $i++)
+    {
+        $star_two .='<i class="fa fa-star" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$halfStar; $i++)
+    {
+        $star_two .='<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$emptyStar; $i++)
+    {
+        $star_two .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+    }
+   
+
+    $c_name_three           = $atts['c_name_three'];  
+    $n_reviews_three        = $atts['n_reviews_three'];
+    $r_star_three="";
+    
+    if(isset($atts['r_star_three'])){$r_star_three           = $atts['r_star_three'];}
+              
+    
+
+    $fillStar      = floor($r_star_three);
+    $emptyStar     = floor(5-$r_star_three);
+    $halfStar      = 5-($fillStar+$emptyStar);
+
+    $star_three        = "";                               //use this to show star
+    for($i=0; $i<$fillStar; $i++)
+    {
+        $star_three .='<i class="fa fa-star" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$halfStar; $i++)
+    {
+        $star_three .='<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$emptyStar; $i++)
+    {
+        $star_three .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+    }
+
+    $c_name_four           = $atts['c_name_four'];  
+    $n_reviews_four        = $atts['n_reviews_four'];
+    $r_star_four           = $atts['r_star_four'];
+
+    $fillStar      = floor($r_star_four);
+    $emptyStar     = floor(5-$r_star_four);
+    $halfStar      = 5-($fillStar+$emptyStar);
+
+    $star_four        = "";                               //use this to show star
+    for($i=0; $i<$fillStar; $i++)
+    {
+        $star_four .='<i class="fa fa-star" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$halfStar; $i++)
+    {
+        $star_four .='<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$emptyStar; $i++)
+    {
+        $star_four .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+    }
+   
+
+    $c_name_five           = $atts['c_name_five'];  
+    $n_reviews_five        = $atts['n_reviews_five'];
+    $r_star_five           = $atts['r_star_five'];
+    
+    $fillStar      = floor($r_star_five);
+    $emptyStar     = floor(5-$r_star_five);
+    $halfStar      = 5-($fillStar+$emptyStar);
+
+    $star_five        = "";                               //use this to show star
+    for($i=0; $i<$fillStar; $i++)
+    {
+        $star_five .='<i class="fa fa-star" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$halfStar; $i++)
+    {
+        $star_five .='<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$emptyStar; $i++)
+    {
+        $star_five .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+    }
+    
+
+
+      $total_rating         = $r_star_one +  $r_star_two + $r_star_three + $r_star_four +  $r_star_five;
+      $total_fill_star      = floor(($total_rating)/5);
+      $total_empty_star     = floor((25-$total_rating)/5);
+      $total_half_star      = 5-($total_fill_star +$total_empty_star);
+      
+    //   $output .= "Total Rating: ".$total_rating."<br>";
+    //   $output .= "Total Fill Star: ".$total_fill_star."<br>";
+    //   $output .= "Total Empty Star: ".$total_empty_star."<br>";
+    //   $output .= "Total Half Star: ".$total_half_star."<br>";
+
+    $star_total          = "";                       //use this to show star
+    for($i=0; $i<$total_fill_star; $i++)
+    {
+        $star_total .='<i class="fa fa-star" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$total_half_star; $i++)
+    {
+        $star_total .='<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+    }
+
+    for($i=0; $i<$total_empty_star; $i++)
+    {
+        $star_total .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+    }
+   
+    //   $total_rating = (round(($r_star_one +  $r_star_two + $r_star_three + $r_star_four +  $r_star_five)/5)); //Total Average Rate
+    //   $star_total        = "";       //Average Stars                
+    //   for($i=0; $i<$total_rating; $i++){
+    //       $star_total .='<i class="fa fa-star" aria-hidden="true"></i>';
+    //   }
+    //   $empty_star = 5-$total_rating ;
+    //   for($i=0; $i<$empty_star; $i++){
+    //       $star_total .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+    //   }
+
+
+      $output .= '
+      <div class="bg-white tablewidgethree">
+           <div class="table-responsive py-3 px-4">
+                <table class="w-100">
+                    <tr>
+                        <td class="widgetthreeName">'. $c_name_one.'</td>
+                        <td class="widgetThreeStars">'.$star_one.'  <span class="widgetThreeSpan">'.$n_reviews_one.'/5</span></td>
+                    </tr>
+                    <tr>
+                        <td class="widgetthreeName">'. $c_name_two.'</td>
+                        <td class="widgetThreeStars">'.$star_two.'  <span class="widgetThreeSpan"> '.$n_reviews_two.'/5</span></td>
+                    </tr>
+                    <tr>
+                        <td class="widgetthreeName">'. $c_name_three.'</td>
+                        <td class="widgetThreeStars">'.$star_three.' <span class="widgetThreeSpan"> '.$n_reviews_three.'/5</span></td>
+                    </tr>
+                    <tr>
+                        <td class="widgetthreeName">'. $c_name_four.'</td>
+                        <td class="widgetThreeStars">'.$star_four.' <span class="widgetThreeSpan"> '.$n_reviews_four.'/5</span></td>
+                    </tr>
+                    <tr>
+                        <td class="widgetthreeName">'. $c_name_five.'</td>
+                        <td class="widgetThreeStars">'.$star_five.'  <span class="widgetThreeSpan">'.$n_reviews_five.'/5</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="totalScoreDiv">
+                <h2 class="text-white">'.$total_score_label.' <div class="widgetTotalStars">'.$star_total.' <span class="widgetTotalSpan">'.($total_rating/5).'/5</span></div></h2>
+                
+            </div>
+        </div>    
+      ';
+      return $output;
+}
+add_action( 'vc_before_init', 'custom_widget_three_be' );
+function custom_widget_three_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Rating - Widget # 03", "batting-domain" ),
+            "base" => "widget_three",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                               
+                                
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Criteria Name One',
+                                    'param_name' => 'c_name_one',
+                                    
+                                ),
+                               
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Number of Reviews',
+                                    'param_name' => 'n_reviews_one',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__( 'Number of fill Star'),
+                                    'param_name' => 'r_star_one',
+                                    'description' => esc_html__( 'Total FIVE Star only'),
+                                    'value' => array(
+                                        esc_html__( '0') => 'Select Number of Star',
+                                        esc_html__( '1') => '1',
+                                        esc_html__( '1.5') => '1.5',
+                                        esc_html__( '2') => '2',
+                                        esc_html__( '2.5') => '2.5',
+                                        esc_html__( '3') => '3',
+                                        esc_html__( '3.5') => '3.5',
+                                        esc_html__( '4') => '4',
+                                        esc_html__( '4.5') => '4.5',
+                                        esc_html__( '5') => '5',
+                                    )
+                                ),
+
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Criteria Name Two',
+                                    'param_name' => 'c_name_two',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Number of Reviews',
+                                    'param_name' => 'n_reviews_two',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__( 'Number of fill Star'),
+                                    'param_name' => 'r_star_two',
+                                    'description' => esc_html__( 'Total FIVE Star only'),
+                                    'value' => array(
+                                        esc_html__( '0') => 'Select Number of Star',
+                                        esc_html__( '1') => '1',
+                                        esc_html__( '1.5') => '1.5',
+                                        esc_html__( '2') => '2',
+                                        esc_html__( '2.5') => '2.5',
+                                        esc_html__( '3') => '3',
+                                        esc_html__( '3.5') => '3.5',
+                                        esc_html__( '4') => '4',
+                                        esc_html__( '4.5') => '4.5',
+                                        esc_html__( '5') => '5',
+                                    )
+                                ),
+
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Criteria Name Three',
+                                    'param_name' => 'c_name_three',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Number of Reviews',
+                                    'param_name' => 'n_reviews_three',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__( 'Number of fill Star'),
+                                    'param_name' => 'r_star_three',
+                                    'description' => esc_html__( 'Total FIVE Star only'),
+                                    'value' => array(
+                                        esc_html__( '0') => 'Select Number of Star',
+                                        esc_html__( '1') => '1',
+                                        esc_html__( '1.5') => '1.5',
+                                        esc_html__( '2') => '2',
+                                        esc_html__( '2.5') => '2.5',
+                                        esc_html__( '3') => '3',
+                                        esc_html__( '3.5') => '3.5',
+                                        esc_html__( '4') => '4',
+                                        esc_html__( '4.5') => '4.5',
+                                        esc_html__( '5') => '5',
+                                    )
+                                ),
+
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Criteria Name Four',
+                                    'param_name' => 'c_name_four',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Number of Reviews',
+                                    'param_name' => 'n_reviews_four',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__( 'Number of fill Star'),
+                                    'param_name' => 'r_star_four',
+                                    'description' => esc_html__( 'Total FIVE Star only'),
+                                    'value' => array(
+                                        esc_html__( '0') => 'Select Number of Star',
+                                        esc_html__( '1') => '1',
+                                        esc_html__( '1.5') => '1.5',
+                                        esc_html__( '2') => '2',
+                                        esc_html__( '2.5') => '2.5',
+                                        esc_html__( '3') => '3',
+                                        esc_html__( '3.5') => '3.5',
+                                        esc_html__( '4') => '4',
+                                        esc_html__( '4.5') => '4.5',
+                                        esc_html__( '5') => '5',
+                                    )
+                                ),
+
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Criteria Name Five',
+                                    'param_name' => 'c_name_five',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Number of Reviews',
+                                    'param_name' => 'n_reviews_five',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__( 'Number of fill Star'),
+                                    'param_name' => 'r_star_five',
+                                    'description' => esc_html__( 'Total FIVE Star only'),
+                                    'value' => array(
+                                        esc_html__( '0') => 'Select Number of Star',
+                                        esc_html__( '1') => '1',
+                                        esc_html__( '1.5') => '1.5',
+                                        esc_html__( '2') => '2',
+                                        esc_html__( '2.5') => '2.5',
+                                        esc_html__( '3') => '3',
+                                        esc_html__( '3.5') => '3.5',
+                                        esc_html__( '4') => '4',
+                                        esc_html__( '4.5') => '4.5',
+                                        esc_html__( '5') => '5',
+                                    )
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Total Score Label',
+                                    'param_name' => 'total_score_label',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                    'value' =>'Total Score',
+                                ),
+                               
+                            
+                        )
+                    )
+                );
+            
+}
+/*Widget # 3 End */
+
+
+/*Widget # 4 */
+add_shortcode( 'widget_four', 'custom_widget_four' );
+function custom_widget_four( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+      $title  = $atts['title'];    //must be in heading two
+      $logo          = wp_get_attachment_image_src($atts['logo'], 'full')[0];
+      $sub_title  = $atts['sub_title']; 
+      $text  = $atts['text'];     
+
+      $btn_one      = vc_build_link( $atts['btn_one'] );
+      $button_link_one      = $btn_one['url'];
+      $button_text_one      = $btn_one['title'];
+      $button_target_one    = $btn_one['target'];
+
+      $btn_color         = $atts['btn_color'];
+        $output     .=  '
+                <div class="bg-white p-4 widgetFourWrapper">
+                    <h2 class="widgetFourTitle">'.$title.'</h2>
+                    <div class="row align-items-center">
+                        <div class="col-md-4 p-0">
+                            <img class="img-fluid img-thumbnail widgetFourImage" src="'.$logo.'" alt="logo">
+                        </div>
+                        <div class="col-md-8">
+                            <h3 class="widgetFourSubTitle">'.$sub_title.'</h3>
+                        </div>
+                    </div>
+                    <p class="grayColor">'.$text.'</p>
+                    <div class="borderOuter"><a class="btn widgetBtnRed" href="'.$button_link_one.'">'. $button_text_one.'</a></div>
+                </div>
+        ';
+        return $output;
+}
+add_action( 'vc_before_init', 'custom_widget_four_be' );
+function custom_widget_four_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Welcome Bonus - Widget # 04", "batting-domain" ),
+            "base" => "widget_four",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array( 
+                            array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Title',
+                                    'param_name' => 'title',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    "type" => "attach_image",
+                                    "heading" => __( "Select Logo"),
+                                    "param_name" => "logo",
+                                    "value" => ''
+                                ), 
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Sub Title',
+                                    'param_name' => 'sub_title',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Text',
+                                    'param_name' => 'text',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'vc_link',
+                                    'heading' => 'Button',
+                                    'param_name' => 'btn_one',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__( 'Number of fill Star'),
+                                    'param_name' => 'btn_color',
+                                    'description' => esc_html__( 'Total FIVE Star only'),
+                                    'value' => array(
+                                        esc_html__( '-1') => 'Select Style Type',
+                                        esc_html__( 'Red') => 'Red',
+                                        esc_html__( 'Green') => 'Green',
+                                        esc_html__( 'Yellow') => 'Yellow',
+                                        esc_html__( 'Blue') => 'Blue',
+                                    )
+                                ),                            
+                        )
+                    )
+                );
+            
+}
+/*Widget # 4 End */
+
+/*Widget # 5 Start */
+add_shortcode( 'widget_five', 'custom_widget_five' );
+function custom_widget_five( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+      $output ="";
+      $j = 0;
+    $enable_widget_five     = $atts['enable_widget_five']; 
+    $categry     = $atts['categry']; 
+
+    //
+    if(isset($atts['number_testinomials'])){
+        $number_testinomials    = $atts['number_testinomials'];    
+    }
+
+    $widget_title           = $atts['title'];  
+//    $output.= $number_testinomials ;
+    if($enable_widget_five == true)
+    {
+        if(empty($number_testinomials)){
+            $number_testinomials = -1;
+        }
+            $atts = shortcode_atts(array(
+                'count'    		    => $number_testinomials,
+                'post_type'		    => 'testimonials_cpt',
+                'category'		=> $categry,
+                ), $atts);
+        
+            $count = "";
+            global $post;
+            $args = array(
+                'posts_per_page'    => $count, 
+                'post_type'         => 'testimonials_cpt',
+                'post_status'       => 'publish',
+                'posts_per_page'    => $atts['count'],
+                'testimonial_category' => $atts['category'],
+            );
+        $sno = 0; 
+        $j = 0;   
+        $myposts    = null;
+        $myposts    = NEW WP_Query($args);
+        global $post;
+        $output .='
+        <div class="row title text-center testimonalWidget-title">    
+            <div class="col-sm-12 pt-4 pb-4">
+                    <h2 class="widgetTwoHead"><span class="blueText widgetTwoSpan">'.$widget_title.'</span></h2>
+            </div>
+        </div>    
+        ';
+        $output.='
+        <div class="swiper-container-testinomials testimonalWidget-swiper">
+        <div class="swiper-wrapper">';
+        while($myposts->have_posts()) 
+        {
+            $myposts->the_post();
+            $sno++;
+           
+            $title				    =	get_the_title();
+            $content				=	get_the_content();
+            $content                = substr($content, 0, 150);
+            $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0]; 
+            $age	                =	get_field('age');
+            $city                   =	get_field('city');
+            $fill_star			    =	get_field('rating_stars');
+            $fillStar               = floor($fill_star);
+            $emptyStar              = floor(5-$fill_star);
+            $halfStar               = 5-($fillStar+$emptyStar);
+        
+            $star        = "";                               //use this to show star
+            for($i=0; $i<$fillStar; $i++)
+            {
+                $star .='<i class="fa fa-star" aria-hidden="true"></i>';
+            }
+        
+            for($i=0; $i<$halfStar; $i++)
+            {
+                $star .='<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+            }
+        
+            for($i=0; $i<$emptyStar; $i++)
+            {
+                $star .='<i class="fa fa-star-o" aria-hidden="true"></i>';
+            }
+            $rating_numbers	        =	get_field('rating_numbers');
+
+            $output.='
+            <div class="swiper-slide testimonalWidget">
+                <div class="row title text-center ">    
+                    <div class="col-sm-12">
+                        <p class="testinomials-para">'.substr($content, 0, 139).'...</p>
+                    </div>
+                    <div class="col-sm-12 testinomials-metas">
+                        <div class="testinomial-image">
+                            <img src="'.$image.'" class="img-fluid">
+                        </div>
+                        <div class="testinomial-meta">
+                            <span class="name">'.$title.'</span>
+                            <span class="rating widgetThreeStars">'.$star.'</span>
+                            <p class="testinomialAge">Age: <span class="ageColor">'.$age.'</span> City: <span class="ageColor">'.$city.'</span></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>';
+        }//while end
+
+        $output .='</div>
+        <!-- Add Arrows -->
+        <div class="testinomial-button-next"></div>
+        <div class="testinomial-button-prev"></div>
+        </div>';
+        wp_reset_query();
+    }//end if
+            return $output;
+}
+add_action( 'vc_before_init', 'custom_widget_five_be' );
+function custom_widget_five_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Recommendations - Widget # 05", "batting-domain" ),
+            "base" => "widget_five",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array( 
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Enter Title',
+                                    'param_name' => 'title',
+                                ),   
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Enter Category',
+                                    'param_name' => 'categry',
+                                ),   
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Number of Testinomials',
+                                    'param_name' => 'number_testinomials',
+                                    'Description' => 'Deault is all',
+                                ),   
+                                array(
+                                    'type' => 'checkbox',
+                                    'heading' => 'Enable Widget 5',
+                                    'param_name' => 'enable_widget_five',
+                                ),                           
+                        )
+                    )
+                );
+            
+}
+/*Widget # 5 End */
+
+
+/*Secondary Menu*/
+add_shortcode( 'secondary_menu', 'secondary_menu' );
+function secondary_menu( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+    $output   = "";
+    $sec_menu = vc_param_group_parse_atts( $atts['sec_menu'] );
+    $output     .=  '
+
+                <div class="row">
+                    <div class="col-md-12 p-0">
+                        <ul class="nav secondaryNav d-flex align-item-center justify-content-between">';
+    foreach($sec_menu as $key => $element) {  
+        $output.= ' <li class="nav-item clickableMenu"><a href="#'.$element['title_id'].'" class="scroll">'.$element['title'].'</a></li>';  
+    }
+    $output .='       </ul>
+                    </div>
+                </div>';
+
+
+    return $output;
+}
+add_action( 'vc_before_init', 'secondary_menu_be' );
+function secondary_menu_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Single Page Nav", "batting-domain" ),
+            "base" => "secondary_menu",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array( 
+                                array(
+                                        'type' => 'param_group',
+                                        'value' => '',
+                                        'param_name' => 'sec_menu',
+                                        // Note params is mapped inside param-group:
+                                        'params' => array(
+                                            array(
+                                                    'type' => 'textfield',
+                                                    'value' => '',
+                                                    'heading' => 'Enter Scroll Name',
+                                                    'param_name' => 'title',
+                                            ),
+                                            array(
+                                                'type' => 'textfield',
+                                                'value' => '',
+                                                'heading' => 'Enter Scroll Id',
+                                                'param_name' => 'title_id',
+                                             )
+                                        )
+                                    )                        
+                        )
+                    )
+                );            
+}
+/* End Secondary */
+
+
+
+
+/*Pors and Cons Menu*/
+function jquery_ui() {
+    wp_enqueue_script ( 'jquery-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js',array('jquery') );
+    echo '<script>
+    jQuery( function() {
+        jQuery( "#pros_tabs" ).tabs();
+      } );
+    
+    </script>';
+}
+
+add_shortcode( 'pros_cons', 'pros_cons' );
+function pros_cons( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+    $output   = "";
+    $pros_list = vc_param_group_parse_atts( $atts['pros_list'] );
+    $pro_label  = $atts['pro_label'];    
+    $cons_label  = $atts['cons_label'];  
+    $pros_li = "";
+    $cons_li = "";
+    add_action( 'wp_footer', 'jquery_ui' );
+    foreach($pros_list as $key => $element) {  
+        $element_title = $element['title'];
+        $element_pros  = $element['pros_cons'];
+        if($element_pros == "Pros"){
+            $pros_li .= ' <li class="nav-item">'.$element['title'].'</li>';
+        }
+        else{
+            $cons_li .= ' <li class="nav-item">'.$element['title'].'</li>';
+        }
+    }
+
+
+    
+    $output     .=  ' 
+    <div class="main-pros-cons-1">
+        <div class="row main-pros-cons">
+            <div class="col-sm-12">
+                <div id="pros_tabs" >
+                    <ul class="tabListView">
+                        <li>
+                            <a href="#pros">
+                                <div class="pros-div">
+                                        <span class="pros-label">'.$pro_label.'</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>    
+                            <a href="#cons">
+                                <div class="cons-div">
+                                    <span class="cons-label">'.$cons_label.'</span>
+                                </div>
+                            </a>
+                        </li>
+                    
+                    </ul>
+                    <div id="pros" class="pros_cons">
+                                <ul class="nav ">
+                                    '.$pros_li.'
+                                </ul>
+                    </div>
+                    <div id="cons" class="cons_list">
+                                <ul class="nav ">
+                                '.$cons_li.'
+                                </ul>
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>    ';
+//     <div class="main-pros-cons">
+//     <div class="labels-pros-cons mb-2">
+//         <div class="pros-div">
+//             <span class="pros-label">'.$pro_label.'</span>
+//         </div>
+//         <div class="cons-div">
+//             <span class="cons-label">'.$cons_label.'</span>
+//         </div>
+//     </div>
+
+// <div class="row pros_cons">
+//     <div class="col-md-12">
+//         <ul class="nav ">';
+// foreach($pros_list as $key => $element) {  
+// $output.= ' <li class="nav-item">'.$element['title'].$element['pros_cons'].'</li>';  
+// }
+// $output .='       </ul>
+//     </div>
+// </div>
+// </div> 
+
+
+    return $output;
+}
+add_action( 'vc_before_init', 'pros_cons_be' );
+function pros_cons_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Pros Cons", "batting-domain" ),
+            "base" => "pros_cons",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array( 
+                                array(
+                                        'type' => 'param_group',
+                                        'value' => '',
+                                        'param_name' => 'pros_list',
+                                        // Note params is mapped inside param-group:
+                                        'params' => array(
+                                            array(
+                                                    'type' => 'textfield',
+                                                    'value' => '',
+                                                    'heading' => 'Enter Text',
+                                                    'param_name' => 'title',
+                                            ),
+                                            array(
+                                                'type' => 'dropdown',
+                                                'heading' => esc_html__( 'Select Type'),
+                                                'param_name' => 'pros_cons',
+                                                'value' => array(
+                                                    esc_html__( '-1') => 'Select',
+                                                    esc_html__( 'Pros') => 'Pros',
+                                                    esc_html__( 'Cons') => 'Cons',
+                                                ),
+                                            )
+                                        )
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Pro Label',
+                                    'param_name' => 'pro_label',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Cons Label',
+                                    'param_name' => 'cons_label',
+                                )   
+
+                        )
+                    )
+                );            
+}
+
+/* End Pros and Cons */
+
+
+/********** S H O R T  C O D E - C O M P O N E N T S - S T A R T **********/
+/*
+List of ShortCode with Atrribute and Values(s)
+1. reviews
+    'id'                => '',
+    'count'    		    => -1,
+    'category'          => '',
+    'orderby' => array( 
+        'fill_star'  => 'ASC'
+    ),
+    'feature'          => '',  /on
+
+2.predictions
+        'id'                => '',
+		'count'    		    => -1,
+	    'category'          =>  '',
+        'heading'           =>  '',
+        'sub-heading'       =>  '',
+        'bg-image'          =>  '',
+        'reviews'           =>  '',
+        'content'           =>  ''
+
+3.evaluation
+        'count'    		    => -1,
+        'width'		    => '100%',
+
+4.testimonials
+
+		'count'    		    => -1;
+        
+5.sport-news
+        'count'    		    => -1,
+        'category'          =>  '',
+        'heading'             =>  '',
+        'sub-heading'             =>  '',
+        'bg-image'          =>  '',
+
+6.displayGallery
+		'count'    		    => -1,        
+        */
+
+/*review start */
+add_shortcode( 'reviews_shortcode', 'reviews_shortcode' );
+function reviews_shortcode( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+        $output ="";
+        $count_id ="";
+        $review_feature = "";
+        if(isset($atts['count_id'])){$count_id                       = $atts['count_id']; }    
+        if(isset($atts['review_feature'])){$review_feature           = $atts['review_feature']; }   
+        $table_number             = "NUM";
+        $table_name               = "NAME";
+        $table_rate               = "RATE";
+        $table_bonus              = "BONUS";
+        $table_link               = "GOTO LINK";
+
+        $bonus_upto_label         = "Bonus upto";
+        $bta_label                = "Bat";
+         
+        if(isset($atts['table_number'])){
+            $table_number            = $atts['table_number'];
+        }
+        if(isset($atts['table_name'])){
+            $table_name              = $atts['table_name'];
+        }
+        if(isset($atts['table_rate'])){
+            $table_rate              = $atts['table_rate'];
+        }
+        if(isset($atts['table_bonus'])){
+            $table_bonus            = $atts['table_bonus'];
+        }
+        if(isset($atts['table_link'])){
+            $table_link              = $atts['table_link'];
+        }
+
+        if(isset($atts['bonus_upto_label'])){
+            $bonus_upto_label        = $atts['bonus_upto_label'];
+        }
+        if(isset($atts['bta_label'])){
+            $bta_label              = $atts['bta_label'];
+        }
+
+
+
+        if($count_id == ""){
+            $count_id = 10;
+        }
+
+        $output .= do_shortcode("[reviews count=".$count_id." feature=".$review_feature ."
+        table_num='".$table_number."'
+                                    table_name          ='".$table_name."'
+                                    table_rate          ='".$table_rate."'
+                                    table_bonus         ='".$table_bonus."'
+                                    table_link          ='".$table_link."'
+                                    bonus_upto_label   ='".$bonus_upto_label."'
+                                     bta_label          ='".$bta_label."'
+        
+        ]");
+        return $output;
+}
+add_action( 'vc_before_init', 'reviews_shortcode_be' );
+function reviews_shortcode_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Reviews", "batting-domain" ),
+            "base" => "reviews_shortcode",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                                // 'id'                => '',
+                                // 'count'    		    => -1,
+                                // 'category'          => '',
+                                // 'feature'          => '',  /on
+
+                                // array(
+                                //     'type' => 'textfield',
+                                //     'value' => '',
+                                //     'heading' => 'Review Id',
+                                //     'description' => esc_html__( 'Type Id number (Optional)'),
+                                //     'param_name' => 'review_id',
+                                // ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Number Lable',
+                                    'param_name' => 'table_number',
+                                    'value'      => 'NUM',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Name Lable',
+                                    'param_name' => 'table_name',
+                                    'value'      => 'NAME',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Rate Lable',
+                                    'param_name' => 'table_rate',
+                                    'value'      => 'RATE',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Bonus Lable',
+                                    'param_name' => 'table_bonus',
+                                    'value'      => 'BONUS',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Goto Link Lable',
+                                    'param_name' => 'table_link',
+                                    'value'      => 'GOTO LINK',
+                                ),
+                                
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Bonusupto Lable',
+                                    'param_name' => 'bonus_upto_label',
+                                    'value'      => 'Bonusupto',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Bat Label',
+                                    'param_name' => 'bta_label',
+                                    'value'      => 'Bat',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Type number of Reviews',
+                                    'description' => esc_html__( 'Number of Reviews - Default is 10 (Optional)'),
+                                    'param_name' => 'count_id',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__('Feature'),
+                                    'param_name' => 'review_feature',
+                                    'value' => array(
+                                        esc_html__( '-1') => 'Select View Type of Feature',
+                                        esc_html__( 'Yes') => 'on',
+                                        esc_html__( 'No') => 'off',
+                                    )
+                                ),
+                        )
+                    )
+                );
+            
+}
+/*review end */
+
+/* prediction start */
+add_shortcode( 'prediction_shortcode', 'prediction_shortcode' );
+function prediction_shortcode( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+        $output ="";
+        
+        $count_id                   = $atts['count_id'];     
+
+        $prediction_id ="";
+        $prediction_heading ="";
+        $prediction_sub_heading="";
+        if(isset($atts['review_feature'])){
+            $review_feature             = $atts['review_feature']; 
+        }
+        if(isset($atts['prediction_id'])){
+            $prediction_id              = $atts['prediction_id'];
+        }
+        if(isset($atts['prediction_heading'])){
+            $prediction_heading         = $atts['prediction_heading'];
+        } 
+        if(isset($atts['prediction_sub_heading'])){
+            $prediction_sub_heading     = $atts['prediction_sub_heading'];
+        }
+        if(isset($atts['prediction_bg'])){
+            $prediction_bg              = $atts['prediction_bg'];
+        }
+        if(isset($atts['prediction_reviews'])){
+            $prediction_reviews         = $atts['prediction_reviews'];
+        }
+       
+        if(isset($atts['prediction_content'])){
+            $prediction_content         = $atts['prediction_content'];
+        }
+        
+        if($count_id == ""){
+            $count_id = 2;
+        }
+        $output .= do_shortcode("[predictions count=".$count_id." id=".$prediction_id." heading='".$prediction_heading."' sub-heading='".$prediction_sub_heading."' bg-image='".$prediction_bg."' reviews='".$prediction_reviews."' content='".$prediction_content."']");
+        return $output;
+}
+add_action( 'vc_before_init', 'prediction_shortcode_be' );
+function prediction_shortcode_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Prediction", "batting-domain" ),
+            "base" => "prediction_shortcode",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                                
+                                // 'id'                => '',
+                                // 'count'    		   => -1,
+                                // 'category'          =>  '',
+                                // 'heading'           =>  '',
+                                // 'sub-heading'       =>  '',
+                                // 'bg-image'          =>  '',
+                                // 'reviews'           =>  '',
+                                // 'content'           =>  ''
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Heading',
+                                    'param_name' => 'prediction_heading',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Sub Heading',
+                                    'param_name' => 'prediction_sub_heading',
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__('Enable Backgorund Image'),
+                                    'param_name' => 'prediction_bg',
+                                    'value' => array(
+                                        esc_html__( '-1') => 'Select',
+                                        esc_html__( 'Yes') => 'Yes',
+                                        esc_html__( 'No') => 'No',
+                                    )
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__('Enable Reviews'),
+                                    'param_name' => 'prediction_reviews',
+                                    'value' => array(
+                                        esc_html__( '-1') => 'Select',
+                                        esc_html__( 'Yes') => 'Yes',
+                                        esc_html__( 'No') => 'No',
+                                    )
+                                ),
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__('Enable Content'),
+                                    'param_name' => 'prediction_content',
+                                    'value' => array(
+                                        esc_html__( '-1') => 'Select',
+                                        esc_html__( 'Yes') => 'Yes',
+                                        esc_html__( 'No') => 'No',
+                                    )
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Type number of Prediction',
+                                    'description' => esc_html__( 'Number of Reviews - Default is 2 (Optional)'),
+                                    'param_name' => 'count_id',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Type Id of Prediction',
+                                    'param_name' => 'prediction_id',
+                                ),
+                                
+                        )
+                    )
+                );
+            
+}
+/* prediction end */
+
+
+/*evaluation start */
+add_shortcode( 'evaluation_shortcode', 'evaluation_shortcode' );
+function evaluation_shortcode( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+        $output ="";
+        
+        $count_id                 = $atts['count_id'];     
+        if(isset($atts['evaluation_width'])){
+                $evaluation_width           = $atts['evaluation_width'];     
+        }
+    
+        
+        if($count_id == ""){
+            $count_id = 6;
+        }
+        // width=".$evaluation_width ."
+        $output .= do_shortcode("[evaluation count=".$count_id."]");
+        return $output;
+}
+add_action( 'vc_before_init', 'evaluation_shortcode_be' );
+function evaluation_shortcode_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Evaluation", "batting-domain" ),
+            "base" => "evaluation_shortcode",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                                // 'count'    		    => -1,
+                                // 'width'		    => '100%',
+
+                                // array(
+                                //     'type' => 'textfield',
+                                //     'value' => '',
+                                //     'heading' => 'Review Id',
+                                //     'description' => esc_html__( 'Type Id number (Optional)'),
+                                //     'param_name' => 'review_id',
+                                // ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Type number of Evaluation',
+                                    'description' => esc_html__( 'Number of Evaluation - Default is 6 (Optional)'),
+                                    'param_name' => 'count_id',
+                                ),
+                                // array(
+                                //     'type' => 'textfield',
+                                //     'value' => '',
+                                //     'heading' => 'Width',
+                                //     'param_name' => 'evaluation_width',
+                                //     'description' => esc_html__( 'Default is 100% (Optional)'),
+                                // ),
+                        )
+                    )
+                );
+            
+}
+/*evaluation end */
+
+
+
+
+
+
+/*testimonials start */
+add_shortcode( 'testimonials_shortcode', 'testimonials_shortcode' );
+function testimonials_shortcode( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+        $output ="";
+        $count_id  ="";
+        $categry ="";
+        if(isset( $atts['count_id'])){
+            $count_id                 = $atts['count_id'];      
+        }
+        if($count_id == ""){
+            $count_id = 10;
+        }
+        if(isset( $atts['categry'])){
+            $categry                 = $atts['categry'];      
+        }
+
+        // width=".$evaluation_width ."
+        $output .= do_shortcode("[testimonials count=".$count_id." category=".$categry."]");
+        return $output;
+}
+add_action( 'vc_before_init', 'testimonials_shortcode_be' );
+function testimonials_shortcode_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Testimonials", "batting-domain" ),
+            "base" => "testimonials_shortcode",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                                // 'count'    		    => -1,
+                                // 'width'		    => '100%',
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Type number of Testimonials',
+                                    'description' => esc_html__( 'Number of Testimonials - Default is 10 (Optional)'),
+                                    'param_name' => 'count_id',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'heading' => 'Enter Category',
+                                    'param_name' => 'categry',
+                                ), 
+                        )
+                    )
+                );
+            
+}
+/*testimonials end */
+
+
+/*gallery start */
+add_shortcode( 'gallery_shortcode', 'gallery_shortcode_new' );
+function gallery_shortcode_new( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+        $output ="";
+        $count_id  ="";
+        if(isset($atts['count_id']))
+        {
+            $count_id                 = $atts['count_id'];      
+        }
+       
+        if($count_id == ""){
+            $count_id = 10;
+        }
+        // width=".$evaluation_width ."
+        $output .= do_shortcode("[gallery count=".$count_id."]");
+        return $output;
+}
+add_action( 'vc_before_init', 'gallery_shortcode_be_new' );
+function gallery_shortcode_be_new()
+{
+    vc_map( 
+        array(
+            "name" => __( "Gallery", "batting-domain" ),
+            "base" => "gallery_shortcode",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                                // 'count'    		    => -1,
+                                // 'width'		    => '100%',
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Type number of Gallery Images',
+                                    'description' => esc_html__( 'Number of Gallery - Default is 10 (Optional)'),
+                                    'param_name' => 'count_id',
+                                ),
+                        )
+                    )
+                );
+            
+}
+/*gallery end */
+
+
+
+/* sport_news start */
+add_shortcode( 'sport_news_shortcode', 'sport_news_shortcode' );
+function sport_news_shortcode( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+        $output ="";
+        
+        $count_id                   = $atts['count_id'];     
+        $sport_news_heading         = $atts['sport_news_heading'];
+        $sport_news_sub_heading     = $atts['sport_news_sub_heading'];
+        $sport_news_bg              = $atts['sport_news_bg'];
+        $sport_content              = $atts['sport_content'];
+
+        if($count_id == ""){
+            $count_id = 2;
+        }
+        $output .= do_shortcode("[sport-news count=".$count_id."  heading='".$sport_news_heading."' sub-heading='".$sport_news_sub_heading."' bg-image='".$sport_news_bg."' content='".$sport_content."']");
+        return $output;
+}
+add_action( 'vc_before_init', 'sport_news_shortcode_be' );
+function sport_news_shortcode_be()
+{
+    vc_map( 
+        array(
+            "name" => __( "Sport News", "batting-domain" ),
+            "base" => "sport_news_shortcode",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                                
+                                // 'count'    		    => -1,
+                                // 'category'          =>  '',
+                                // 'heading'             =>  '',
+                                // 'sub-heading'             =>  '',
+                                // 'bg-image'          =>  '',
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Heading',
+                                    'param_name' => 'sport_news_heading',
+                                ),
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Sub Heading',
+                                    'param_name' => 'sport_news_sub_heading',
+                                ),
+                                
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__('Enable Backgorund Image'),
+                                    'param_name' => 'sport_news_bg',
+                                    'value' => array(
+                                        esc_html__( '-1') => 'Select',
+                                        esc_html__( 'Yes') => 'Yes',
+                                        esc_html__( 'No') => 'No',
+                                    )
+                                ),
+                               
+                                array(
+                                    'type' => 'textfield',
+                                    'value' => '',
+                                    'heading' => 'Type number of News',
+                                    'description' => esc_html__( 'Number of Reviews - Default is 2 (Optional)'),
+                                    'param_name' => 'count_id',
+                                ),   
+                                
+                                array(
+                                    'type' => 'dropdown',
+                                    'heading' => esc_html__('Enable Content'),
+                                    'param_name' => 'sport_content',
+                                    'value' => array(
+                                        esc_html__( '-1') => 'Select',
+                                        esc_html__( 'Yes') => 'Yes',
+                                        esc_html__( 'No') => 'No',
+                                    )
+                                ),
+                        )
+                    )
+                );
+            
+}
+/* sport_news end */
+
+
+
+/*author start */
+add_shortcode( 'author_shortcode', 'author_shortcode_new' );
+function author_shortcode_new( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+        $output ="";
+        if(isset($atts['author_info']))
+        {
+           $author_info                 = $atts['author_info'];      
+        }
+        if($author_info == true){
+            $output .= do_shortcode("[author-info]");
+            return $output;
+        }
+}
+add_action( 'vc_before_init', 'author_shortcode_be_new' );
+function author_shortcode_be_new()
+{
+    vc_map( 
+        array(
+            "name" => __( "Author Information", "batting-domain" ),
+            "base" => "author_shortcode",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                                // 'count'    		    => -1,
+                                // 'width'		    => '100%',
+                                array(
+                                    'type' => 'checkbox',
+                                    'value' => '',
+                                    'heading' => 'Show Author Information',
+                                    'param_name' => 'author_info',
+                                ),
+                        )
+                    )
+                );
+            
+}
+/*author end */
+
+/********** S H O R T  C O D E - C O M P O N E N T S - E N D **********/
+
+
+
+/*Heading */
+add_shortcode( 'post_betting', 'post_betting' );
+function post_betting( $atts ) 
+{
+    extract( shortcode_atts( array(
+    ), 
+    $atts ) );
+  	$output ="";
+
+    $heading_one         = $atts['heading_one'];
+    $heading_one_size    = $atts['heading_one_size'];
+    $heading_two         = $atts['heading_two'];
+    $heading_two_size    = $atts['heading_two_size'];
+    $heading_id          = $atts['heading_id'];
+
+    $output     .=  '
+    <h1 id="'.$heading_id.'" class="bet-widget-heading pb-3"><span class="blueText" style="'.$heading_one_size.'">'.$heading_one.'</span> 
+    <span class="redText position-relative text-upper" style="'.$heading_two_size.'">'.$heading_two.'<img src="'.get_template_directory_uri().'/assets/images/star.png" class="star-absolute"></span></h1>'; 
+    return $output;
+}
+add_action( 'vc_before_init', 'post_betting_be' );
+function post_betting_be()
+{
+    $list = array(
+        'post',
+        'bet_cpt'
+      );
+    vc_set_default_editor_post_types( $list );
+    
+    
+    vc_map( 
+        array(
+            "name" => __( "post_betting", "batting-domain" ),
+            "base" => "post_betting",
+            "class" => "",
+            "category" => __( "Devmont Digital", "batting-domain"),
+            "icon" => "my_bartag",
+            'admin_enqueue_css' => array( get_template_directory_uri() . '/css/vc-element.css' ),
+            "params" => array(
+                               
+                                array(
+                                    'type' => 'loop',
+                                    'heading' => 'First Heading Size',
+                                    'param_name' => 'heading_one_size',
+                                    'param_holder_class' => 'vc_colored-dropdown vc_btn3-colored-dropdown',
+                                ),
+                              
+                                )
+                ) 
+            );
+}
+/*Heading End*/
+
+}//end condition of visual Composer
