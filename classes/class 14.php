@@ -67,7 +67,7 @@ foreach ($collectionOfarray as $key => $i) {
     echo $key.'<br/>';
     // $arr1[$key,$value];
     foreach ($i as $key => $j) {
-        // echo $collectionOfarray[0][0]."  ";
+        // echo $collectionOfarray[0][0]."  " ;
         echo $j.'<br/>';
     }
     ;
