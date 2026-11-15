@@ -73,3 +73,18 @@ $userPhone = null;
 $userAccounts = ['ubl',1200,true,'meezan bank',200,false];
 // echo var_dump($userAccounts);
 // $userData = new className();
+
+// the conditional statemnet in php 
+// 3 ways of it 
+
+if(5>7){
+  echo "yes its enable";
+}else{
+  echo "not its disable;
+}
+
+
+
+
+
+
