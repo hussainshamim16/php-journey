@@ -83,6 +83,12 @@ if(5>7){
   echo "not its disable;
 }
 
+// practice 
+$username = ["ali","Bano","Chodri","Dokra"];
+foreach ($username as $user){
+echo $user . '\n';
+}
+
 
 
 
