@@ -89,7 +89,43 @@ foreach ($username as $user){
 echo $user . '\n';
 }
 
+	$a = 10;
+	echo $a++;
+	echo $a;
+	echo ++$a;
 
+	echo "\n".(2<=>2); // -1 0 1
+	echo "\n";
+
+	// Conditional statement 
+	if(20>10){
+		echo "yes 20 above 10";
+	}elseif(10>211){
+		echo "yes 10 above 2";
+	}else{
+		echo "nothing";
+	}
+
+	echo "\n";
+
+	$city="islamabad";
+	switch($city){
+		case "islamabad":
+		echo"capital of pk";
+		break;
+
+		case "karachi":
+		echo "City Of Lite";
+		break;
+
+		case "multan":
+		echo "city of cent";
+		break;
+
+		default :
+		echo("no city found");
+		break;
+	}
 
 
 
