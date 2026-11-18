@@ -128,7 +128,7 @@ echo $user . '\n';
 	}
 
 	#logical opt
-		$userClass = 12;
+	$userClass = 12;
 	$userAge = 17;
 	$userRoll = 12;
 	$userEnroll = 18;
@@ -139,5 +139,35 @@ echo $user . '\n';
 		echo "you are not eligible";
 	}
 
+	#For LOOP
+	for($i=0;$i<=10;$i++){
+		echo "For LOOP !!";
+		echo "\n";
+	}
 
+	#in break
+	$user_need = 5;
+	for($v=0;$v<=10;$v++){
+		echo "BREAK".$v."\n";
+		if($v == $user_need){
+			break;
+		}
+	}
+
+	#in CONTINUE
+	$skip_value = 5;
+	for($B=0;$B<=10;$B++){
+		if($B == $skip_value){
+			continue;
+		}
+		echo "CONTINUE".$B."\n";
+	}
+
+	#Nested LOOP
+	for($A = 1; $A <=3;$A++){
+		// echo "$A \n";
+		for($B=1;$B<=3;$B++){
+			echo"First $A Second $B \n";
+		}
+	}
 
