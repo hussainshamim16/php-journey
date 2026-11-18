@@ -127,6 +127,17 @@ echo $user . '\n';
 		break;
 	}
 
+	#logical opt
+		$userClass = 12;
+	$userAge = 17;
+	$userRoll = 12;
+	$userEnroll = 18;
+
+	if($userAge > $userClass && $userEnroll == 18) {
+		echo("je ap ess class key liye apply kar skty hen!");
+	}else{
+		echo "you are not eligible";
+	}
 
 
 
