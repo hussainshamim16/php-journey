@@ -162,4 +162,19 @@ for ($A = 1; $A <= 3; $A++) {
         echo "First $A Second $B \n";
     }
 }
+
+# While Loop
+$count = 1;
+while ($count <= 5) {
+    echo "The number is: $count <br>";
+    $count++; // Increment the counter to avoid an infinite loop
+}
+
+# do while Loop
+$count = 1;
+do {
+    echo "Number: $count\n";
+    $count++;
+} while ($count <= 5);
+
 ?>
