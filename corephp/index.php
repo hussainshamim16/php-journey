@@ -177,4 +177,12 @@ do {
     $count++;
 } while ($count <= 5);
 
+# do Negative 
+$counter = 10;
+do {
+    echo "Number Minus: $counter\n";
+    $counter--;
+} while ($counter > 0);
+
+
 ?>
