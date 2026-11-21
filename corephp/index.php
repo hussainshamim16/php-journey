@@ -18,6 +18,7 @@ echo $age;
 // HTML in PHP and PHP in HTML
 /* Koi bhi HTML tag agar aap echo ke andar "" mein likhenge toh wo chal jayega. */ 
 echo "<h1 style='color: red'>hello i am " . $name . "</h1>";
+echo "<h1 style='color: red'>hello i am " . $name . "</h1>";
 ?>
 
 <a href="#" style="color: <?php echo $color; ?>">my age <?php echo $age; ?></a>
