@@ -185,5 +185,34 @@ do {
     $counter--;
 } while ($counter > 0);
 
+# goto statement 
+$name = 'ali';
+$age = 20;
+if($name == 'ali' or $age == 20){
+	echo ("std kei information dee jaa rhi hey ");
+	goto abc;
+}
+echo ("\nbaad ka code");
+echo ("\nbaad ka code");
+echo ("\nbaad ka code");
+echo ("\nbaad ka code");
+echo ("\n");
+abc:
+echo ("$name aike acha larka hey ! wo $age saal ka hey .");
+
+# simple with parameterize function
+function printClass($class){
+	echo "ye sab $class my hey \n";
+}
+function printname($nammm,$cls){
+	echo "mera name $nammm hey \n";
+	printClass($cls);
+}
+function htmloopp($color,$username){
+	echo "<h2 style="color: $color">$username</h2>";
+}
+printname("ali",10);
+printname("Zameer",12);
+printname("kaleem",6);
 
 ?>
