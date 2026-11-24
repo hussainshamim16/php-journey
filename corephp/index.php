@@ -215,4 +215,8 @@ printname("ali",10);
 printname("Zameer",12);
 printname("kaleem",6);
 
+// array in php
+$fruits = ["Apple", "Banana", "Cherry"];
+echo $fruits[0]; // Outputs: Apple
+
 ?>
