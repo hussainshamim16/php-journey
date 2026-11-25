@@ -217,6 +217,6 @@ printname("kaleem",6);
 
 // array in php
 $fruits = ["Apple", "Banana", "Cherry"];
-echo $fruits[0]; // Outputs: Apple
+echo $fruits[0,1,2,]; // Outputs: Apple
 
 ?>
