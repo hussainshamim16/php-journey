@@ -219,4 +219,9 @@ printname("kaleem",6);
 $fruits = ["Apple", "Banana", "Cherry"];
 echo $fruits[0,1,2,]; // Outputs: Apple
 
+// array loop
+foreach ($fruits as $value) {
+  echo "$value <br>";
+}
+
 ?>
